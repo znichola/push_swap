@@ -6,16 +6,14 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/05 19:49:44 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/05 19:54:17 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * push swap algo.
+ * recursive try
  * 
- * let's test a binary tree
 */
-
 
 int main(void)
 {
