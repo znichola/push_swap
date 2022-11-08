@@ -6,11 +6,11 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:58:14 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/08 14:38:10 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:45:53 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
 // pa (push a): Take the first element at the top of b and put it at the top of a.
 // Do nothing if b is empty.

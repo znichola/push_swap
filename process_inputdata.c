@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/08 10:20:14 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:33:32 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ static int	ft_atoi_read(int *n, char **str)
 		(*str)++;
 	}
 	if (!(**str >= '0' && **str <= '9'))
-		return (-1);
+		return (FAILURE);
 	while (**str >= '0' && **str <= '9')
 		*n = *n * 10 + (*(*str)++) - '0';
 	*n = *n * s;
-	return (0);
+	return (SUCCESS);
 }
 
 static int	countnums(char const *s)
@@ -57,44 +57,50 @@ static int	countnums(char const *s)
 	return (count);
 }
 
-// static int	nextnumber(char **str)
-// {
-// 	int	ret;
-
-// 	while (**str == ' ' && **str != '\0')
-// 		(*str)++;
-// 	ret = ft_atoi(*str);
-// 	printf("here:%d\n", ret);
-// 	while (**str != ' ' && **str != '\0')
-// 		(*str)++;
-// 	return (ret);
-// }
+static int	add_num(t_stack *s, int i, char **str)
+{
+	int	t;
+	int	e;
+	
+	if (ft_atoi_read(&t, str))
+	{
+		// write(1, &"input nu@ error\n", 17);
+		return (FAILURE);
+	}
+	e = i;
+	while (e++ < s->size)
+		if (s->root_a[e] == t)
+		{
+			// write(1, &"duplicate num\n", 14);
+			return (FAILURE);
+		}
+	s->root_a[i] = t;
+	return (SUCCESS);
+}
 
 int	process_inputdata(t_stack *stack, char *str)
 {
 	int	i;
-
+	int	t;
+	
 	i = countnums(str);
-	printf("there are %d numbers\n", i);
 	stack->root_a = (int *)malloc(sizeof(int) * i);
 	if (!stack->root_a)
-		return (0);
+		return (ERROR);
 	stack->root_b = (int *)malloc(sizeof(int) * i);
 	if (!stack->root_b)
 	{
 		free(stack->root_a);
-		return (0);
+		return (ERROR);
 	}
 	stack->size = i;
 	stack->a = stack->root_a + i - 1;
 	stack->b = stack->root_b - 1;
 	while (i--)
 	{
-		// printf("num %c\n", *str);
-		if (ft_atoi_read(&stack->root_a[i], &str))
-			printf("input num error %c\n", *str);
+		if (add_num(stack, i, &str))
+			return (FAILURE);
 		str++;
-		// printf("num is%d\n", stack->root_a[i]);
 	}
-	return (1);
+	return (SUCCESS);
 }
