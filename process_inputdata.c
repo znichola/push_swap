@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/06 20:05:14 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/08 10:20:14 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,27 +73,28 @@ static int	countnums(char const *s)
 int	process_inputdata(t_stack *stack, char *str)
 {
 	int	i;
-	int	e;
-	
+
 	i = countnums(str);
 	printf("there are %d numbers\n", i);
-	stack->a = (int *)malloc(sizeof(int) * i);
-	if (!stack->a)
+	stack->root_a = (int *)malloc(sizeof(int) * i);
+	if (!stack->root_a)
 		return (0);
-	stack->b = (int *)malloc(sizeof(int) * i);
-	if (!stack->b)
+	stack->root_b = (int *)malloc(sizeof(int) * i);
+	if (!stack->root_b)
 	{
-		free(stack->a);
+		free(stack->root_a);
 		return (0);
 	}
+	stack->size = i;
+	stack->a = stack->root_a + i - 1;
+	stack->b = stack->root_b - 1;
 	while (i--)
 	{
-		printf("num %c\n", *str);
-		if (ft_atoi_read(&stack->a[i], &str))
+		// printf("num %c\n", *str);
+		if (ft_atoi_read(&stack->root_a[i], &str))
 			printf("input num error %c\n", *str);
 		str++;
-		printf("num is%d\n", stack->a[i]);
-		e = 0;
+		// printf("num is%d\n", stack->root_a[i]);
 	}
 	return (1);
 }

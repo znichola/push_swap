@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/06 20:01:25 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/08 10:55:17 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,37 @@
 
 #include "push_swap.h"
 
-int main(int ac, char **av)
+void op_test(t_stack *s, int (*op)(t_stack *))
 {
-	printf("hello world!\n");
-	t_stack	stack;
-	process_inputdata(&stack, av[1]);
+	if (op == sa)
+		printf("sa");
+	else if (op == sb)
+		printf("sb");
+	else if (op == ss)
+		printf("ss");
+	else if (op == pa)
+		printf("pa");
+	else if (op == pb)
+		printf("pb");
+	printf(" op:%d\n", op(s));
+	printf("a	b\n");
 	for (int i = 0; i < 4; i++)
 	{
-		printf("%d\n", stack.a[i]);
+		if (s->root_a + i <= s->a)
+			printf("%d", s->root_a[i]);
+		printf("	");
+		if (s->root_b + i <= s->b)
+			printf("%d", s->root_b[i]);
+		printf("\n");
 	}
+}
+
+int main(int ac, char **av)
+{
+	t_stack	stack;
+	process_inputdata(&stack, av[1]);
+	// printf("opret:%d\n", sa(&stack));
+	op_test(&stack, pa);
+	printf("top of stack is:%d a len is:%d\n", *(stack.a), sh(&stack, 'a'));
 	return (0);
 }
