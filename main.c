@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/08 10:55:17 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/08 12:36:53 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ void op_test(t_stack *s, int (*op)(t_stack *))
 		printf("pa");
 	else if (op == pb)
 		printf("pb");
+	else if (op == ra)
+		printf("ra");
+	else if (op == rb)
+		printf("rb");
 	printf(" op:%d\n", op(s));
 	printf("a	b\n");
 	for (int i = 0; i < 4; i++)

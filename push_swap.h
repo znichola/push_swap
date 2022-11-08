@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:23:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/08 10:30:55 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:38:10 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,24 @@ typedef struct s_stack
 
 int	process_inputdata(t_stack *stack, char *str);
 
-// stack ops
+// stack ops 0
 int	sh(t_stack *s, char x);
+int	tg(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *));
 int	sa(t_stack *s);
 int	sb(t_stack *s);
 int	ss(t_stack *s);
+
+// stack ops 1
 int	pa(t_stack *s);
 int	pb(t_stack *s);
+int	ra(t_stack *s);
+int	rb(t_stack *s);
+int	rr(t_stack *s);
+
+// stack ops 2
+int	rra(t_stack *s);
+int	rrb(t_stack *s);
+int	rrr(t_stack *s);
+
 
 #endif /* push swap*/

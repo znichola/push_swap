@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 19:57:05 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/08 11:00:17 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:38:10 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,27 @@
  * 1
  * 5 <- top of stack
 */
+
+// return the height of stack x
+int	sh(t_stack *s, char x)
+{
+	if (x == 'a')
+		return(s->a - s->root_a + 1);
+	if (x == 'b')
+		return(s->b - s->root_b + 1);
+	return(ERROR);
+}
+
+// do x and y at the same time
+int	tg(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *))
+{
+	if (x(s) + y(s) == FAILURE * 2)
+	{
+		write(1, &"double fail, impossible\n", 24);
+		return (FAILURE);
+	}
+	return (SUCCESS);
+}
 
 // Swap the first 2 elements at the top of stack a.
 // Do nothing if there is only one or no elements.
@@ -60,35 +81,5 @@ int	sb(t_stack *s)
 // ss : sa and sb at the same time.
 int	ss(t_stack *s)
 {
-	int	t;
-
-	t = sb(s);
-	if (sa(s) && t)
-		return (FAILURE); //should be impossible
-	return (SUCCESS);
-	// return (sa(s) + sb(s));
-}
-
-// pa (push a): Take the first element at the top of b and put it at the top of a.
-// Do nothing if b is empty.
-int	pa(t_stack *s)
-{
-	if (sh(s, 'b') == 0)
-		return (FAILURE);
-	s->a += 1;
-	*s->a = *s->b;
-	s->b -= 1;
-	return (SUCCESS);
-}
-
-// pb (push b): Take the first element at the top of a and put it at the top of b.
-// Do nothing if a is empty.
-int	pb(t_stack *s)
-{
-	if (sh(s, 'a') == 0)
-		return (FAILURE);
-	s->b += 1;
-	*s->b = *s->a;
-	s->a -= 1;
-	return (SUCCESS);
+	return (tg(s, sa, sb));
 }
