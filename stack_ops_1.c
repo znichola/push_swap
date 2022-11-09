@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:58:14 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/08 14:45:53 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:43:40 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,20 @@ int	pb(t_stack *s)
 int	ra(t_stack *s)
 {
 	int	t;
-
-	if (sh(s, 'a') == 0)
+	int	h;
+	
+	h = sh(s, 'a');
+	if (h <= 1)
 		return (FAILURE);
 	t = *s->a;
-	*s->a = *s->root_a;
-	*s->root_a = *s->a;
+	while (h-- > 0)
+		s->root_a[h] = s->root_a[h - 1];
+	*s->root_a = t;
 	return (SUCCESS);
 }
+
+// TODO: these two functions are horribly slow, 
+// I think, will see about optimisation later
 
 
 // rb (rotate b): Shift up all elements of stack b by 1.
@@ -56,12 +62,15 @@ int	ra(t_stack *s)
 int	rb(t_stack *s)
 {
 	int	t;
-
-	if (sh(s, 'b') == 0)
+	int	h;
+	
+	h = sh(s, 'b');
+	if (h <= 1)
 		return (FAILURE);
 	t = *s->b;
-	*s->b = *s->root_b;
-	*s->root_b = *s->b;
+	while (h-- > 0)
+		s->root_b[h] = s->root_b[h - 1];
+	*s->root_b = t;
 	return (SUCCESS);
 }
 

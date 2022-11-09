@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:59:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/08 14:46:03 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:52:11 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,16 @@
 int	rra(t_stack *s)
 {
 	int	t;
-
-	if (sh(s, 'a') == 0)
+	int	h;
+	int	i;
+	
+	h = sh(s, 'a');
+	if (h <= 1)
 		return (FAILURE);
 	t = *s->root_a;
-	*s->root_a = *s->a;
+	i = -1;
+	while (i++ < h)
+		s->root_a[i] = s->root_a[i + 1];
 	*s->a = t;
 	return (SUCCESS);
 }
@@ -31,11 +36,16 @@ int	rra(t_stack *s)
 int	rrb(t_stack *s)
 {
 	int	t;
-
-	if (sh(s, 'b') == 0)
+	int	h;
+	int	i;
+	
+	h = sh(s, 'b');
+	if (h <= 1)
 		return (FAILURE);
 	t = *s->root_b;
-	*s->root_b = *s->b;
+	i = -1;
+	while (i++ < h)
+		s->root_b[i] = s->root_b[i + 1];
 	*s->b = t;
 	return (SUCCESS);
 }
@@ -45,3 +55,8 @@ int	rrr(t_stack *s)
 {
 	return (tg(s, ra, rb));
 }
+
+// int	ff(t_stack *s)
+// {
+	
+// }

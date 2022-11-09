@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/08 16:42:14 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:52:28 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,14 @@ int	rra(t_stack *s);
 int	rrb(t_stack *s);
 int	rrr(t_stack *s);
 
+int	tt(t_stack *s)
+{
+	return(*s->a);
+}
+
 void op_test(t_stack *s, int (*op)(t_stack *))
 {
+	printf("\n");
 	if (op == sa)
 		printf("sa");
 	else if (op == sb)
@@ -58,9 +64,10 @@ void op_test(t_stack *s, int (*op)(t_stack *))
 	else if (op == rrr)
 		printf("rrr");
 	
-	printf(" op:%d\n", op(s));
-	printf("a	b\n");
-	for (int i = 0; i < s->size; i++)
+	printf(":%d\n", op(s));
+	printf("A	B\n");
+	for (int i = s->size - 1; i >= 0; i--)
+	// for (int i = 0; i < s->size; i++)
 	{
 		if (s->root_a + i <= s->a)
 			printf("%d", s->root_a[i]);
@@ -93,8 +100,14 @@ int main(int ac, char **av)
 	t_stack	stack;
 	error_check(process_inputdata(&stack, av[1]), &stack);
 	printf("process:%d\n", process_inputdata(&stack, av[1]));
-	// printf("opret:%d\n", sa(&stack));
-	op_test(&stack, pa);
-	printf("top of stack is:%d a len is:%d\n", *(stack.a), sh(&stack, 'a'));
+	op_test(&stack, tt);
+	op_test(&stack, pb);
+	op_test(&stack, pb);
+	op_test(&stack, pb);
+	op_test(&stack, pb);
+	op_test(&stack, pb);
+	op_test(&stack, rrb);
+	printf("top of stack is:%d len_a:%d len_b:%d\n",
+			*(stack.a), sh(&stack, 'a'), sh(&stack, 'b'));
 	error_check(2, &stack);
 }

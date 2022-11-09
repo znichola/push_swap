@@ -6,11 +6,33 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/08 16:33:32 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/08 17:50:01 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	countnums(char const *s)
+{
+	int		count;
+	int		flag;
+	int		old_flag;
+
+	flag = -1;
+	count = 0;
+	while (*s)
+	{
+		old_flag = flag;
+		if (*s == ' ')
+			flag = 0;
+		else
+			flag = 1;
+		if (old_flag != flag && flag == 1)
+			count++;
+		s++;
+	}
+	return (count);
+}
 
 static int	ft_atoi_read(int *n, char **str)
 {
@@ -33,28 +55,6 @@ static int	ft_atoi_read(int *n, char **str)
 		*n = *n * 10 + (*(*str)++) - '0';
 	*n = *n * s;
 	return (SUCCESS);
-}
-
-static int	countnums(char const *s)
-{
-	int		count;
-	int		flag;
-	int		old_flag;
-
-	flag = -1;
-	count = 0;
-	while (*s)
-	{
-		old_flag = flag;
-		if (*s == ' ')
-			flag = 0;
-		else
-			flag = 1;
-		if (old_flag != flag && flag == 1)
-			count++;
-		s++;
-	}
-	return (count);
 }
 
 static int	add_num(t_stack *s, int i, char **str)
