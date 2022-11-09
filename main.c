@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/09 10:52:28 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:47:47 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,6 @@
 */
 
 #include "push_swap.h"
-
-int	sa(t_stack *s);
-int	sb(t_stack *s);
-int	ss(t_stack *s);
-
-// stack ops 1
-int	pa(t_stack *s);
-int	pb(t_stack *s);
-int	ra(t_stack *s);
-int	rb(t_stack *s);
-int	rr(t_stack *s);
-
-// stack ops 2
-int	rra(t_stack *s);
-int	rrb(t_stack *s);
-int	rrr(t_stack *s);
 
 int	tt(t_stack *s)
 {
@@ -101,13 +85,22 @@ int main(int ac, char **av)
 	error_check(process_inputdata(&stack, av[1]), &stack);
 	printf("process:%d\n", process_inputdata(&stack, av[1]));
 	op_test(&stack, tt);
-	op_test(&stack, pb);
-	op_test(&stack, pb);
-	op_test(&stack, pb);
-	op_test(&stack, pb);
-	op_test(&stack, pb);
-	op_test(&stack, rrb);
-	printf("top of stack is:%d len_a:%d len_b:%d\n",
-			*(stack.a), sh(&stack, 'a'), sh(&stack, 'b'));
-	error_check(2, &stack);
+	// op_test(&stack, pb);
+	// op_test(&stack, pb);
+	// op_test(&stack, pb);
+	// op_test(&stack, pb);
+	// op_test(&stack, pb);
+	// op_test(&stack, rrb);
+
+	t_ops ops;
+	init_ops(&stack, &ops);
+	
+	int	recursive_steps; 
+	printf("recursion:%d\n", recursive_solver(&stack, &ops, &recursive_steps));
+	op_test(&stack, tt);
+	printf("it took %d steps and there are %d instructions\n",recursive_steps, ops.c - ops.root + 1);
+	for (int i = 0; i < 10; i++)
+		printf("op:%d\n", ops.root[i]);
+	// printf("top of stack is:%d len_a:%d len_b:%d\n", *(stack.a), sh(&stack, 'a'), sh(&stack, 'b'));
+	// error_check(2, &stack);
 }

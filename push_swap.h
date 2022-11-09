@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:23:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/08 14:46:12 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:12:58 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@
 # define FAILURE 1
 # define ERROR -1
 
+# ifndef DEPTH
+#  define DEPTH 10
+# endif
+
 typedef struct s_stack
 {
 	int	size;
@@ -35,6 +39,12 @@ typedef struct s_stack
 	int	*a;
 	int	*b;
 } t_stack;
+
+typedef struct s_ops
+{
+	int	*root;
+	int	*c;
+} t_ops;
 
 int	process_inputdata(t_stack *stack, char *str);
 
@@ -57,5 +67,8 @@ int	rra(t_stack *s);
 int	rrb(t_stack *s);
 int	rrr(t_stack *s);
 
+// recursive solver
+int	init_ops(t_stack *s, t_ops *o);
+int	recursive_solver(t_stack *s, t_ops *o, int *rs);
 
 #endif /* push swap*/
