@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:59:56 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/09 17:29:29 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:44:33 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	check_complete(t_stack *s)
 	return (SUCCESS);
 }
 
-int	recursive_solver(t_stack *s, t_ops *o, int *rs)
+int	recursive_solver(t_stack *s, t_ops *o, unsigned int *rs)
 {
 	int	i;
 
@@ -137,8 +137,7 @@ int	recursive_solver(t_stack *s, t_ops *o, int *rs)
 			*rs += 1;
 			if (recursive_solver(s, o, rs) == SUCCESS)
 				return (SUCCESS); // SUCCESS
-			// write(1, &"undoing ", 8);
-			// write_op(i);
+			// write(1, &"undoing ", 8); write_op(i);
 			if (undo_op(s, *o->c))
 				return (ERROR);
 			o->c -= 1;

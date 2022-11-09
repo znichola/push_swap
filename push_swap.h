@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:23:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/09 17:25:54 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:46:50 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ int	rrr(t_stack *s);
 // recursive solver
 int	init_ops(t_stack *s, t_ops *o);
 int	write_op(int i);
-int	recursive_solver(t_stack *s, t_ops *o, int *rs);
+int	do_next_op(t_stack *s, int i);
+int	recursive_solver(t_stack *s, t_ops *o, unsigned int *rs);
 
 #endif /* push swap*/
 
