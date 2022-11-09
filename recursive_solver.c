@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:59:56 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/09 13:09:36 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:29:29 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,33 @@ int	init_ops(t_stack *s, t_ops *o)
 	if (!o)
 		return (ERROR);
 	o->c = o->root - 1;
+	return (SUCCESS);
+}
+
+int	write_op(int i)
+{
+	if (i == 0)
+		write(1, &"sa\n", 3);
+	else if (i == 1)
+		write(1, &"sb\n", 3);
+	else if (i == 2)
+		write(1, &"ss\n", 3);
+	else if (i == 3)
+		write(1, &"pa\n", 3);
+	else if (i == 4)
+		write(1, &"pb\n", 3);
+	else if (i == 5)
+		write(1, &"ra\n", 3);
+	else if (i == 6)
+		write(1, &"rb\n", 3);
+	else if (i == 7)
+		write(1, &"rr\n", 3);
+	else if (i == 8)
+		write(1, &"rra\n", 4);
+	else if (i == 9)
+		write(1, &"rrb\n", 4);
+	else if (i == 10)
+		write(1, &"rrr\n", 4);
 	return (SUCCESS);
 }
 
@@ -54,17 +81,17 @@ int	do_next_op(t_stack *s, int i)
 int	undo_op(t_stack *s, int i)
 {
 	if (i == 0)
-		return (sa(s));
+		return (sa(s)); // sa checked
 	else if (i == 1)
-		return (sb(s));
+		return (sb(s)); // sb checked
 	else if (i == 2)
-		return (ss(s));
+		return (ss(s)); // ss checked
 	else if (i == 3)
-		return (pb(s));
+		return (pb(s)); // pa checked
 	else if (i == 4)
-		return (pa(s));
+		return (pa(s)); // pb checked
 	else if (i == 5)
-		return (rra(s));
+		return (rra(s)); 
 	else if (i == 6)
 		return (rrb(s));
 	else if (i == 7)
@@ -110,9 +137,11 @@ int	recursive_solver(t_stack *s, t_ops *o, int *rs)
 			*rs += 1;
 			if (recursive_solver(s, o, rs) == SUCCESS)
 				return (SUCCESS); // SUCCESS
-			o->c -= 1;
-			if (undo_op(s, i))
+			// write(1, &"undoing ", 8);
+			// write_op(i);
+			if (undo_op(s, *o->c))
 				return (ERROR);
+			o->c -= 1;
 		}
 	}
 	return (ERROR);

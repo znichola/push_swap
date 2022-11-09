@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/09 13:47:47 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:30:17 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void op_test(t_stack *s, int (*op)(t_stack *))
 	
 	printf(":%d\n", op(s));
 	printf("A	B\n");
-	for (int i = s->size - 1; i >= 0; i--)
-	// for (int i = 0; i < s->size; i++)
+	// for (int i = s->size - 1; i >= 0; i--)
+	for (int i = 0; i < s->size; i++)
 	{
 		if (s->root_a + i <= s->a)
 			printf("%d", s->root_a[i]);
@@ -84,12 +84,12 @@ int main(int ac, char **av)
 	t_stack	stack;
 	error_check(process_inputdata(&stack, av[1]), &stack);
 	printf("process:%d\n", process_inputdata(&stack, av[1]));
+	// op_test(&stack, pb);
+	// op_test(&stack, pb);
+	// op_test(&stack, pb);
 	op_test(&stack, tt);
-	// op_test(&stack, pb);
-	// op_test(&stack, pb);
-	// op_test(&stack, pb);
-	// op_test(&stack, pb);
-	// op_test(&stack, pb);
+	// op_test(&stack, rrr);
+	// op_test(&stack, rr);
 	// op_test(&stack, rrb);
 
 	t_ops ops;
@@ -97,10 +97,11 @@ int main(int ac, char **av)
 	
 	int	recursive_steps; 
 	printf("recursion:%d\n", recursive_solver(&stack, &ops, &recursive_steps));
+
 	op_test(&stack, tt);
 	printf("it took %d steps and there are %d instructions\n",recursive_steps, ops.c - ops.root + 1);
-	for (int i = 0; i < 10; i++)
-		printf("op:%d\n", ops.root[i]);
+	for (int i = 0; i < ops.c - ops.root + 1; i++)
+		write_op(ops.root[i]);
 	// printf("top of stack is:%d len_a:%d len_b:%d\n", *(stack.a), sh(&stack, 'a'), sh(&stack, 'b'));
 	// error_check(2, &stack);
 }

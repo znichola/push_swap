@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:59:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/09 10:52:11 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:26:12 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	rrb(t_stack *s)
 // rrr : rra and rrb at the same time.
 int	rrr(t_stack *s)
 {
-	return (tg(s, ra, rb));
+	return (tg(s, rra, rrb));
 }
 
 // int	ff(t_stack *s)
