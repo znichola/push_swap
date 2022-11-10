@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 19:57:05 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/10 11:03:26 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/10 13:49:49 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@
  * 5 <- top of stack
 */
 
-// return the height of stack x
+/** wraper with recursion logic for stack _ops */
+
+// wrapper: return the height of stack x
 int	sh(t_stack *s, char x)
 {
 	if (x == 'a')
@@ -39,59 +41,43 @@ int	sh(t_stack *s, char x)
 	return(ERROR);
 }
 
-// do x and y at the same time
+// wrapper: do x and y at the same time
 int	tg(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *))
 {
+	// int	q;
+
+	// q = x(s);
+
 	if (x(s) + y(s) == FAILURE * 2)
 	{
-		write(1, &"double fail, impossible\n", 24);
+		write(1, &"warning: double fail .. impossible and dangerous\n", 50);
 		return (FAILURE);
 	}
 	return (SUCCESS);
 }
 
-// Swap the first 2 elements at the top of stack a.
+// wrapper: Swap the first 2 elements at the top of stack a.
 // Do nothing if there is only one or no elements.
 int	sa(t_stack *s)
 {
-	int	t;
-
-	if (!(sh(s, 'a') > 1))
+	if (*(s->a - 1) < *(s->a))
 		return (FAILURE);
-
-	//opti
-	if (*(s->a - 1) > *(s->a))
-		return (FAILURE);
-	//o
-	
-	t = *(s->a);
-	*(s->a) = *(s->a - 1);
-	*(s->a - 1) = t;
-	return (SUCCESS);
+	return (sa_(s));
 }
 
-// sb (swap b): Swap the first 2 elements at the top of stack b.
+// wrapper: sb (swap b): Swap the first 2 elements at the top of stack b.
 // Do nothing if there is only one or no elements.
 int	sb(t_stack *s)
 {
-	int	t;
-
-	if (!(sh(s, 'b') > 1))
+	if (*(s->b - 1) < *(s->b))
 		return (FAILURE);
-	
-	// //opti
-	// if (*(s->b - 1) < *(s->b))
-	// 	return (FAILURE);
-	// //o
-
-	t = *(s->b);
-	*(s->b) = *(s->b - 1);
-	*(s->b - 1) = t;
-	return (SUCCESS);
+	return (sb_(s));
 }
 
-// ss : sa and sb at the same time.
+// wrapper: ss : sa and sb at the same time.
 int	ss(t_stack *s)
 {
-	return (tg(s, sa, sb));
+	if (*(s->a - 1) < *(s->a) && *(s->b - 1) < *(s->b)) //TODO: tg needs to be rewritten for this
+		return (FAILURE);
+	return (tg(s, sa_, sb_));
 }

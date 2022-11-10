@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:23:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/10 11:11:13 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/10 12:06:58 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,14 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-// typedef struct s_bt
-// {
-// 	int	data;
-// 	t_bt	*right_node;
-// 	t_bt	*left_node;
-// } t_bt;
-
-# define SUCCESS 0
-# define FAILURE 1
-# define ERROR -1
-
 
 # ifndef DEPTH
 #  define DEPTH 10
 # endif
+
+# define SUCCESS 0
+# define FAILURE 1
+# define ERROR -1
 
 # define SA 0
 # define SB 1
@@ -65,6 +58,15 @@ typedef int (*op_array)(t_stack *);
 
 int	process_inputdata(t_stack *stack, char *str);
 
+// recursive solver
+int	init_ops(t_stack *s, t_ops *o);
+int	write_op(int i);
+int	do_next_op(t_stack *s, int i);
+int	recursive_solver(t_stack *s, t_ops *o, unsigned int *rs);
+
+// util
+int	message_ret(int sig, char *msg);
+
 // stack ops 0
 int	sh(t_stack *s, char x);
 int	tg(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *));
@@ -84,14 +86,23 @@ int	rra(t_stack *s);
 int	rrb(t_stack *s);
 int	rrr(t_stack *s);
 
-// recursive solver
-int	init_ops(t_stack *s, t_ops *o);
-int	write_op(int i);
-int	do_next_op(t_stack *s, int i);
-int	recursive_solver(t_stack *s, t_ops *o, unsigned int *rs);
+// stack ops _0
+int	tg_(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *));
+int	sa_(t_stack *s);
+int	sb_(t_stack *s);
+int	ss_(t_stack *s);
 
-// util
-int	message_ret(int sig, char *msg);
+// stack ops _1
+int	pa_(t_stack *s);
+int	pb_(t_stack *s);
+int	ra_(t_stack *s);
+int	rb_(t_stack *s);
+int	rr_(t_stack *s);
+
+// stack ops _2
+int	rra_(t_stack *s);
+int	rrb_(t_stack *s);
+int	rrr_(t_stack *s);
 
 #endif /* push swap*/
 

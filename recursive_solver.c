@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:59:56 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/10 11:11:48 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/10 13:48:00 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,27 +81,27 @@ int	do_next_op(t_stack *s, int i)
 int	undo_op(t_stack *s, int i)
 {
 	if (i == SA)
-		return (sa(s)); // sa checked
+		return (sa_(s)); // sa checked
 	else if (i == SB)
-		return (sb(s)); // sb checked
+		return (sb_(s)); // sb checked
 	else if (i == SS)
-		return (ss(s)); // ss checked
+		return (ss_(s)); // ss checked
 	else if (i == PA)
-		return (pb(s)); // pa checked
+		return (pb_(s)); // pa checked
 	else if (i == PB)
-		return (pa(s)); // pb checked
+		return (pa_(s)); // pb checked
 	else if (i == RA)
-		return (rra(s)); 
+		return (rra_(s)); 
 	else if (i == RB)
-		return (rrb(s));
+		return (rrb_(s));
 	else if (i == RR)
-		return (rrr(s));
+		return (rrr_(s));
 	else if (i == RRA)
-		return (ra(s));
+		return (ra_(s));
 	else if (i == RRB)
-		return (rb(s));
+		return (rb_(s));
 	else if (i == RRR)
-		return (rr(s));
+		return (rr_(s));
 	return (ERROR);
 }
 
@@ -127,7 +127,7 @@ int	recursive_solver(t_stack *s, t_ops *o, unsigned int *rs)
 	if (o->c - o->root + 1 == DEPTH)
 		return (FAILURE);
 	i = -1;
-	while (i++ <= 10)
+	while (i++ < OPS_NUM)
 	{
 		if (do_next_op(s, i) == SUCCESS)
 		{
