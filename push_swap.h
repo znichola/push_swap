@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:23:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/09 17:46:50 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/10 07:41:42 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,23 @@
 # define FAILURE 1
 # define ERROR -1
 
+
 # ifndef DEPTH
 #  define DEPTH 10
 # endif
+
+# define SA 0
+# define SB 1
+# define SS 2
+# define PA 3
+# define PB 4
+# define RA 5
+# define RB 6
+# define RR 7
+# define RRA 8
+# define RRB 9
+# define RRR 10
+# define OPS_NUM 11
 
 typedef struct s_stack
 {
@@ -45,6 +59,9 @@ typedef struct s_ops
 	int	*root;
 	int	*c;
 } t_ops;
+
+// function pointer
+typedef int (*op_array)(t_stack *);
 
 int	process_inputdata(t_stack *stack, char *str);
 

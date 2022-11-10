@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:59:56 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/09 17:44:33 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/10 07:41:39 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,54 +53,54 @@ int	write_op(int i)
 
 int	do_next_op(t_stack *s, int i)
 {
-	if (i == 0)
+	if (i == SA)
 		return (sa(s));
-	else if (i == 1)
+	else if (i == SB)
 		return (sb(s));
-	else if (i == 2)
+	else if (i == SS)
 		return (ss(s));
-	else if (i == 3)
+	else if (i == PA)
 		return (pa(s));
-	else if (i == 4)
+	else if (i == PB)
 		return (pb(s));
-	else if (i == 5)
+	else if (i == RA)
 		return (ra(s));
-	else if (i == 6)
+	else if (i == RB)
 		return (rb(s));
-	else if (i == 7)
+	else if (i == RR)
 		return (rr(s));
-	else if (i == 8)
+	else if (i == RRA)
 		return (rra(s));
-	else if (i == 9)
+	else if (i == RRB)
 		return (rrb(s));
-	else if (i == 10)
+	else if (i == RRR)
 		return (rrr(s));
 	return (ERROR);
 }
 
 int	undo_op(t_stack *s, int i)
 {
-	if (i == 0)
+	if (i == SA)
 		return (sa(s)); // sa checked
-	else if (i == 1)
+	else if (i == SB)
 		return (sb(s)); // sb checked
-	else if (i == 2)
+	else if (i == SS)
 		return (ss(s)); // ss checked
-	else if (i == 3)
+	else if (i == PA)
 		return (pb(s)); // pa checked
-	else if (i == 4)
+	else if (i == PB)
 		return (pa(s)); // pb checked
-	else if (i == 5)
+	else if (i == RA)
 		return (rra(s)); 
-	else if (i == 6)
+	else if (i == RB)
 		return (rrb(s));
-	else if (i == 7)
+	else if (i == RR)
 		return (rrr(s));
-	else if (i == 8)
+	else if (i == RRA)
 		return (ra(s));
-	else if (i == 9)
+	else if (i == RRB)
 		return (rb(s));
-	else if (i == 10)
+	else if (i == RRR)
 		return (rr(s));
 	return (ERROR);
 }
