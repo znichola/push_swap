@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/10 07:31:50 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/10 07:53:29 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,10 @@ int	ops_executor(t_stack *s, t_ops *o, op_array op_arr[OPS_NUM])
 {
 	for (int i = 0; i < o->c - o->root + 1; i ++)
 	{
+		op_arr[o->root[i]](s);
 		// do_next_op(s, o->root[i]);
 		// write_op(o->root[i]);
-		op_test(s, op_arr[o->root[i]]);
+		// op_test(s, op_arr[o->root[i]]);
 	}
 	return (SUCCESS);
 }
@@ -124,7 +125,7 @@ int main(int ac, char **av)
 	
 	printf("recursion:%d\n", recursive_solver(&stack, &ops, &recursive_steps));
 
-	op_test(&stack, tt);
+	// op_test(&stack, tt);
 	printf("it took %d steps and there are %d instructions\n",recursive_steps, ops.c - ops.root + 1);
 	
 	fill_opperations(op_arr);

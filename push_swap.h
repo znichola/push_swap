@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:23:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/10 07:41:42 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/10 11:11:13 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,9 @@ int	init_ops(t_stack *s, t_ops *o);
 int	write_op(int i);
 int	do_next_op(t_stack *s, int i);
 int	recursive_solver(t_stack *s, t_ops *o, unsigned int *rs);
+
+// util
+int	message_ret(int sig, char *msg);
 
 #endif /* push swap*/
 

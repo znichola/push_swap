@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 19:57:05 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/08 14:38:10 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/10 11:03:26 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,12 @@ int	sa(t_stack *s)
 
 	if (!(sh(s, 'a') > 1))
 		return (FAILURE);
+
+	//opti
+	if (*(s->a - 1) > *(s->a))
+		return (FAILURE);
+	//o
+	
 	t = *(s->a);
 	*(s->a) = *(s->a - 1);
 	*(s->a - 1) = t;
@@ -72,6 +78,12 @@ int	sb(t_stack *s)
 
 	if (!(sh(s, 'b') > 1))
 		return (FAILURE);
+	
+	// //opti
+	// if (*(s->b - 1) < *(s->b))
+	// 	return (FAILURE);
+	// //o
+
 	t = *(s->b);
 	*(s->b) = *(s->b - 1);
 	*(s->b - 1) = t;

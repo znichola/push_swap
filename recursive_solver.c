@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:59:56 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/10 07:41:39 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/10 11:11:48 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int	recursive_solver(t_stack *s, t_ops *o, unsigned int *rs)
 				return (SUCCESS); // SUCCESS
 			// write(1, &"undoing ", 8); write_op(i);
 			if (undo_op(s, *o->c))
-				return (ERROR);
+				return (message_ret(ERROR, "undoing error\n"));
 			o->c -= 1;
 		}
 	}
