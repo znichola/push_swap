@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/10 13:51:27 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:10:44 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,10 @@ int	ops_executor(t_stack *s, t_ops *o, op_array op_arr[OPS_NUM])
 {
 	for (int i = 0; i < o->c - o->root + 1; i ++)
 	{
-		// op_arr[o->root[i]](s);
+		op_arr[o->root[i]](s);
 		// do_next_op(s, o->root[i]);
 		// write_op(o->root[i]);
-		op_test(s, op_arr[o->root[i]]);
+		// op_test(s, op_arr[o->root[i]]);
 	}
 	return (SUCCESS);
 }
@@ -119,18 +119,19 @@ int main(int ac, char **av)
 
 	error_check(process_inputdata(&stack, av[1]), &stack);
 	process_inputdata(&dupe, av[1]);
-	// op_test(&stack, tt);
-	op_test(&dupe, tt);
 	init_ops(&stack, &ops);
 	
-	printf("recursion:%d\n", recursive_solver(&stack, &ops, &recursive_steps));
-
-	op_test(&stack, tt);
-	printf("it took %d steps and there are %d instructions\n",recursive_steps, ops.c - ops.root + 1);
-	
+	int rs = recursive_solver(&stack, &ops, &recursive_steps);
 	fill_opperations(op_arr);
-	ops_executor(&dupe, &ops, op_arr);
+	
+# ifdef TEST
+	printf("recursion:%d\n", rs);
+	op_test(&stack, tt);
+	printf("it took %d steps and there are %d instructions\n", recursive_steps, ops.c - ops.root + 1);
 	op_test(&dupe, tt);
+	ops_executor(&dupe, &ops, op_arr);
+# endif
+
 	for (int i = 0; i < ops.c - ops.root + 1; i++)
 		write_op(ops.root[i]);
 	// printf("top of stack is:%d len_a:%d len_b:%d\n", *(stack.a), sh(&stack, 'a'), sh(&stack, 'b'));

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:23:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/10 12:06:58 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/11 16:58:07 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # ifndef DEPTH
 #  define DEPTH 10
 # endif
+
+# define TEST
 
 # define SUCCESS 0
 # define FAILURE 1
