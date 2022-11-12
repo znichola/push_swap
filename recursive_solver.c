@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:59:56 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/10 13:48:00 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/12 16:57:33 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 // resursilvy check all opoerations with the 
 // given stack untill one yields a result below the depth threashold
 
-int	init_ops(t_stack *s, t_ops *o)
+int	init_ops(t_stack *s)
 {
-	o->root = (int *)malloc(sizeof(int) * s->size * 4);
-	if (!o)
+	s->o->root = (int *)malloc(sizeof(int) * s->size * 4);
+	if (!s->o->root)
 		return (ERROR);
-	o->c = o->root - 1;
+	s->o->c = s->o->root - 1;
+	// fill_opperations(o);
 	return (SUCCESS);
 }
 
@@ -51,6 +52,7 @@ int	write_op(int i)
 	return (SUCCESS);
 }
 
+// can probably remove
 int	do_next_op(t_stack *s, int i)
 {
 	if (i == SA)
@@ -78,6 +80,7 @@ int	do_next_op(t_stack *s, int i)
 	return (ERROR);
 }
 
+// can probably remove
 int	undo_op(t_stack *s, int i)
 {
 	if (i == SA)
@@ -118,29 +121,31 @@ int	check_complete(t_stack *s)
 	return (SUCCESS);
 }
 
-int	recursive_solver(t_stack *s, t_ops *o, unsigned int *rs)
+int	recursive_solver(t_stack *s, unsigned int *rs)
 {
 	int	i;
 
 	if (check_complete(s) == SUCCESS)
 		return (SUCCESS);
-	if (o->c - o->root + 1 == DEPTH)
+	if (s->o->c - s->o->root + 1 == DEPTH)
 		return (FAILURE);
 	i = -1;
 	while (i++ < OPS_NUM)
 	{
-		if (do_next_op(s, i) == SUCCESS)
+		if (do_next_op(s, i) == SUCCESS) //TODO:remove
+		// if (o->op[i] == SUCCESS)
 		{
-			o->c += 1;
-			*o->c = i;
+			s->o->c += 1;
+			*s->o->c = i;
 			// printf("here depth:%d\n", o->c - o->root + 1);
 			*rs += 1;
-			if (recursive_solver(s, o, rs) == SUCCESS)
+			if (recursive_solver(s, rs) == SUCCESS)
 				return (SUCCESS); // SUCCESS
 			// write(1, &"undoing ", 8); write_op(i);
-			if (undo_op(s, *o->c))
+			if (undo_op(s, *s->o->c)) // TODO: remove
+			// if (o->ud[i] == SUCCESS)
 				return (message_ret(ERROR, "undoing error\n"));
-			o->c -= 1;
+			s->o->c -= 1;
 		}
 	}
 	return (ERROR);

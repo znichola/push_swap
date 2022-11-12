@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/08 17:50:01 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/11 17:08:08 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ static int	add_num(t_stack *s, int i, char **str)
 		}
 	s->root_a[i] = t;
 	return (SUCCESS);
+}
+
+int	find_run(t_stack *s)
+{
+	
 }
 
 int	process_inputdata(t_stack *stack, char *str)

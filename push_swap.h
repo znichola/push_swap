@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:23:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/11 16:58:07 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/12 16:59:24 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,15 @@
 # define RRR 10
 # define OPS_NUM 11
 
-typedef struct s_stack
+
+typedef struct s_run
 {
-	int	size;
-	int	*root_a;
-	int	*root_b;
+	int	*solution;
 	int	*a;
 	int	*b;
-} t_stack;
+	int	hight_a;
+	int	hight_b;
+} t_run;
 
 typedef struct s_ops
 {
@@ -55,16 +56,33 @@ typedef struct s_ops
 	int	*c;
 } t_ops;
 
+typedef struct s_stack
+{
+	int		size;
+	int		*root_a;
+	int		*root_b;
+	int		*a;
+	int		*b;
+	t_run	*r;
+	t_ops	*o; // chicken and egg problem
+} t_stack;
+
 // function pointer
 typedef int (*op_array)(t_stack *);
+
+typedef struct s_oparrs
+{
+	op_array	opperation[OPS_NUM];
+	op_array	undo[OPS_NUM];
+}t_oparrs;
 
 int	process_inputdata(t_stack *stack, char *str);
 
 // recursive solver
-int	init_ops(t_stack *s, t_ops *o);
+int	init_ops(t_stack *s);
 int	write_op(int i);
 int	do_next_op(t_stack *s, int i);
-int	recursive_solver(t_stack *s, t_ops *o, unsigned int *rs);
+int	recursive_solver(t_stack *s, unsigned int *rs);
 
 // util
 int	message_ret(int sig, char *msg);
