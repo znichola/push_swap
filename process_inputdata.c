@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/11 17:08:08 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/13 22:53:56 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,45 @@ static int	add_num(t_stack *s, int i, char **str)
 	return (SUCCESS);
 }
 
-int	find_run(t_stack *s)
+int	find_solution(t_stack *s)
 {
-	
+	int	flag;
+	int	i;
+	int	t;
+
+	s->r.solution = (int *)malloc(sizeof(int) * s->size);
+	if (!s->r.solution)
+		return (ERROR);
+	ft_memcpy(s->r.solution, s->root_a, s->size * sizeof(int));
+	flag = 1;
+	while (flag)
+	{
+		flag = 0;
+		i = -1;
+		while (i++ < s->size - 1) // overflow checked here!
+			if (s->r.solution[i] < s->r.solution[i + 1]) // overflow check
+			{
+				t = s->r.solution[i];
+				s->r.solution[i] = s->r.solution[i + 1];
+				s->r.solution[i + 1] = t;
+				flag = 1;
+			}
+	}
+	init_ops(s);
+	return (SUCCESS);
 }
+
+int	finish_setup(t_stack *s)
+{
+	find_solution(s);
+	init_ops(s);
+	return (SUCCESS);
+}
+
+// int	duplicate_stack()
+// {
+	
+// }
 
 int	process_inputdata(t_stack *stack, char *str)
 {
@@ -107,5 +142,6 @@ int	process_inputdata(t_stack *stack, char *str)
 			return (FAILURE);
 		str++;
 	}
+	find_solution(stack);
 	return (SUCCESS);
 }

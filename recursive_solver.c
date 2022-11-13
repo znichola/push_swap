@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:59:56 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/12 16:57:33 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/13 22:13:00 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 int	init_ops(t_stack *s)
 {
-	s->o->root = (int *)malloc(sizeof(int) * s->size * 4);
-	if (!s->o->root)
+	s->o.root = (int *)malloc(sizeof(int) * s->size * 4);
+	if (!s->o.root)
 		return (ERROR);
-	s->o->c = s->o->root - 1;
+	s->o.c = s->o.root - 1;
 	// fill_opperations(o);
 	return (SUCCESS);
 }
@@ -127,25 +127,25 @@ int	recursive_solver(t_stack *s, unsigned int *rs)
 
 	if (check_complete(s) == SUCCESS)
 		return (SUCCESS);
-	if (s->o->c - s->o->root + 1 == DEPTH)
+	if (s->o.c - s->o.root + 1 == DEPTH)
 		return (FAILURE);
 	i = -1;
 	while (i++ < OPS_NUM)
 	{
 		if (do_next_op(s, i) == SUCCESS) //TODO:remove
-		// if (o->op[i] == SUCCESS)
+		// if (o.op[i] == SUCCESS)
 		{
-			s->o->c += 1;
-			*s->o->c = i;
-			// printf("here depth:%d\n", o->c - o->root + 1);
+			s->o.c += 1;
+			*s->o.c = i;
+			// printf("here depth:%d\n", o.c - o.root + 1);
 			*rs += 1;
 			if (recursive_solver(s, rs) == SUCCESS)
 				return (SUCCESS); // SUCCESS
 			// write(1, &"undoing ", 8); write_op(i);
-			if (undo_op(s, *s->o->c)) // TODO: remove
-			// if (o->ud[i] == SUCCESS)
+			if (undo_op(s, *s->o.c)) // TODO: remove
+			// if (o.ud[i] == SUCCESS)
 				return (message_ret(ERROR, "undoing error\n"));
-			s->o->c -= 1;
+			s->o.c -= 1;
 		}
 	}
 	return (ERROR);

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:23:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/12 16:59:24 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/13 23:17:47 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #  define DEPTH 10
 # endif
 
-# define TEST
+// # define TEST
 
 # define SUCCESS 0
 # define FAILURE 1
@@ -63,8 +63,8 @@ typedef struct s_stack
 	int		*root_b;
 	int		*a;
 	int		*b;
-	t_run	*r;
-	t_ops	*o; // chicken and egg problem
+	t_run	r;
+	t_ops	o; // chicken and egg problem also this is apointer so the real value needs to be initialised somewhere
 } t_stack;
 
 // function pointer
@@ -72,7 +72,7 @@ typedef int (*op_array)(t_stack *);
 
 typedef struct s_oparrs
 {
-	op_array	opperation[OPS_NUM];
+	op_array	opp[OPS_NUM];
 	op_array	undo[OPS_NUM];
 }t_oparrs;
 
@@ -86,6 +86,7 @@ int	recursive_solver(t_stack *s, unsigned int *rs);
 
 // util
 int	message_ret(int sig, char *msg);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 // stack ops 0
 int	sh(t_stack *s, char x);

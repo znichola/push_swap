@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:58:14 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/10 13:56:05 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/12 17:21:02 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 // and put it at the top of a. Do nothing if b is empty.
 int	pa(t_stack *s)
 {
+	// check if push breaks the order
 	return (pa_(s));
 }
 
