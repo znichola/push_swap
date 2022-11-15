@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:59:56 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/13 22:13:00 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/14 10:14:19 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,6 @@
 
 // resursilvy check all opoerations with the 
 // given stack untill one yields a result below the depth threashold
-
-int	init_ops(t_stack *s)
-{
-	s->o.root = (int *)malloc(sizeof(int) * s->size * 4);
-	if (!s->o.root)
-		return (ERROR);
-	s->o.c = s->o.root - 1;
-	// fill_opperations(o);
-	return (SUCCESS);
-}
 
 int	write_op(int i)
 {
@@ -108,6 +98,12 @@ int	undo_op(t_stack *s, int i)
 	return (ERROR);
 }
 
+// TODO: funciton to update run information, used in next op.
+int	update_run(t_stack *s)
+{
+	s->r.a;
+}
+
 int	check_complete(t_stack *s)
 {
 	int	i;
@@ -132,6 +128,7 @@ int	recursive_solver(t_stack *s, unsigned int *rs)
 	i = -1;
 	while (i++ < OPS_NUM)
 	{
+		// TODO: make func to update the run information, used by next op
 		if (do_next_op(s, i) == SUCCESS) //TODO:remove
 		// if (o.op[i] == SUCCESS)
 		{

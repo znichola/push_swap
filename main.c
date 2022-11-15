@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/13 23:18:12 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/14 10:27:20 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void op_test(t_stack *s, int (*op)(t_stack *))
 	else if (op == rrr)
 		printf("rrr");
 	else if (op == tt)
-		printf("__");
+		printf("tt");
 	printf(":%d\n", op(s));
 	// for (int i = s->size - 1; i >= 0; i--)
 	for (int i = 0; i < s->size; i++)
@@ -69,7 +69,9 @@ void	error_check(int ip, t_stack *s)
 	if (ip == FAILURE || ip == 2)
 	{
 		free(s->root_a);
-		free(s->root_b);
+		free(s->root_b); 
+		// free(s->r.solution);
+		// free(s->o.root);
 	}
 	if (ip == 2)
 		exit(0);
@@ -136,12 +138,6 @@ int main(int ac, char **av)
 	unsigned int	recursive_steps = 0;
 
 	error_check(process_inputdata(&stack, av[1]), &stack);
-	// for (int i = 0; i < stack.size; i++)
-	// 	printf("n:%d is %d\n", i, stack.r.solution[i]);
-	// return (0);
-
-	// init_ops(&stack);
-	
 	fill_opperations(&op_arr);
 	int rs = recursive_solver(&stack, &recursive_steps);
 	
@@ -151,9 +147,9 @@ int main(int ac, char **av)
 	printf("it took %d steps and there are %d instructions\n", recursive_steps, stack.o.c - stack.o.root + 1);
 	process_inputdata(&dupe, av[1]);
 	foo(&stack, &dupe);
-	// init_ops(&dupe);
 	ops_executor(&dupe, &op_arr);
 	op_test(&dupe, tt);
+	printf("\n");
 # endif
 
 	for (int i = 0; i < stack.o.c - stack.o.root + 1; i++)

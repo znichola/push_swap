@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/13 22:53:56 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/14 19:23:40 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,21 +102,45 @@ int	find_solution(t_stack *s)
 				flag = 1;
 			}
 	}
-	init_ops(s);
 	return (SUCCESS);
+}
+
+int	init_ops(t_stack *s)
+{
+	s->o.root = (int *)malloc(sizeof(int) * s->size * 4);
+	if (!s->o.root)
+		return (ERROR);
+	s->o.c = s->o.root - 1;
+	// fill_opperations(o);
+	return (SUCCESS);
+}
+
+int	bar(t_stack *s)
+{
+	int	i;
+	int	e;
+	int	*t;
+
+	i = -1;
+	while (i++ < s->size - 1)
+	{
+		s->root_a[i];
+	}
+	// no idea what this funciton does
 }
 
 int	finish_setup(t_stack *s)
 {
-	find_solution(s);
-	init_ops(s);
+	if (find_solution(s))
+		return (ERROR);
+	if (init_ops(s))
+		return (freeret_1(ERROR, s->r.solution));
+	s->r.a = NULL;
+	s->r.b = NULL;
+	s->r.hight_a = 0;
+	s->r.hight_b = 0;
 	return (SUCCESS);
 }
-
-// int	duplicate_stack()
-// {
-	
-// }
 
 int	process_inputdata(t_stack *stack, char *str)
 {
@@ -129,10 +153,7 @@ int	process_inputdata(t_stack *stack, char *str)
 		return (ERROR);
 	stack->root_b = (int *)malloc(sizeof(int) * i);
 	if (!stack->root_b)
-	{
-		free(stack->root_a);
-		return (ERROR);
-	}
+		return (freeret_1(ERROR, stack->root_a));
 	stack->size = i;
 	stack->a = stack->root_a + i - 1;
 	stack->b = stack->root_b - 1;
@@ -142,6 +163,7 @@ int	process_inputdata(t_stack *stack, char *str)
 			return (FAILURE);
 		str++;
 	}
-	find_solution(stack);
+	if (finish_setup(stack))
+		return (freeret_2(ERROR, stack->root_a, stack->root_b));
 	return (SUCCESS);
 }

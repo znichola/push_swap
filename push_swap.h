@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:23:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/13 23:17:47 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/14 10:16:01 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #  define DEPTH 10
 # endif
 
-// # define TEST
+# define TEST
 
 # define SUCCESS 0
 # define FAILURE 1
@@ -46,6 +46,8 @@ typedef struct s_run
 	int	*solution;
 	int	*a;
 	int	*b;
+	int	*sa;
+	int	*sb;
 	int	hight_a;
 	int	hight_b;
 } t_run;
@@ -87,6 +89,9 @@ int	recursive_solver(t_stack *s, unsigned int *rs);
 // util
 int	message_ret(int sig, char *msg);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
+int	freeret_1(int ret, void *x);
+int	freeret_2(int ret, void *x, void *y);
+int	freeret_3(int ret, void *x, void *y, void *z);
 
 // stack ops 0
 int	sh(t_stack *s, char x);

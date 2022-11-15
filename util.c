@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:07:31 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/12 17:34:19 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/14 19:24:10 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,73 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 			*d++ = *s++;
 	return (dest);
 }
+
+int	freeret_1(int ret, void *x)
+{
+	free(x);
+	return (ret);
+}
+
+int	freeret_2(int ret, void *x, void *y)
+{
+	free(x);
+	free(y);
+	return (ret);
+}
+
+int	freeret_3(int ret, void *x, void *y, void *z)
+{
+	free(x);
+	free(y);
+	free(z);
+	return (ret);
+}
+
+int	*findin_sorted(int x, int *arr, int *arr_end)
+{
+	int	*t;
+
+	// printf("x:%d t:%p *t:%d diff:%d arr:%p end:%p\n", x, t, *t, arr_end - arr, arr, arr_end);
+	if (*arr_end == x)
+		return (arr_end);
+	if (*arr == x)
+		return (arr);
+	t = arr + ((arr_end - arr) / 2);
+	if (*t == x)
+		return (t);
+	if (arr_end - arr == 1)
+		return (NULL);
+	if (*t < x)
+		return (findin_sorted(x, t + 1, arr_end));
+	return (findin_sorted(x, arr, t - 1));
+}
+
+int	*findin_unsorted(int x, int *arr, int size)
+{
+	while (size-- > 0)
+		if (arr[size] == x)
+			return (arr + size);
+	return (NULL);
+}
+
+// int main(void) 
+// {
+// 	int list[11];
+// 	for (int i = 0; i < 11; i++)
+// 		list[i] = i;
+// 	list[0] = -1;
+// 	list[1] = 1;
+// 	printf("here\n");
+// 	// printf("0:%d\n", list[0]);
+// 	// printf("0:%d\n", list[1]);
+// 	for (int i = -2; i < 12; i++)
+// 	{
+// 		// pri ntf("%d\n", list[i]);
+// 		int	*t = findin_sorted(i, list, list + 10);
+// 		if (!t)
+// 			printf("i:%d null ret\n", i);
+// 		else
+// 			printf("%p: i:%d %d\n", t, i, *t);
+// 	}
+// 	return (0);
+// }
