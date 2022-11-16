@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:23:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/16 15:06:18 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/16 18:39:15 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_run
 	int	*s_end;
 	int	a_hight;
 	int	b_hight;
-	int	completion;
+	int	finish_me;
 } t_run;
 
 typedef struct s_ops
@@ -80,6 +80,10 @@ typedef struct s_oparrs
 }t_oparrs;
 
 int	process_inputdata(t_stack *stack, char *str);
+
+// main
+int	tt(t_stack *s);
+void op_test(t_stack *s, int (*op)(t_stack *));
 
 // recursive solver
 int	init_ops(t_stack *s);

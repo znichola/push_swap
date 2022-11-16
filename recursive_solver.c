@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:59:56 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/16 14:02:09 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/16 17:59:50 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	write_op(int i)
 	return (SUCCESS);
 }
 
-int	update_run(t_stack *s)
+int	update_run(t_stack *s, int blh)
 {
 	int	i;
 
@@ -54,14 +54,21 @@ int	update_run(t_stack *s)
 	// exit(0);
 	s->r.a = findin_sorted(*s->a, s->r.solution, s->r.s_end);
 	s->r.b = findin_sorted(*s->b, s->r.solution, s->r.s_end);
-	// i = 0;
-	// while (s->a[-i] == s->r.a[i])
-	// 	i++;
+	i = 0;
+	while (s->r.a - i >= s->r.solution && s->r.a[-i] == s->a[-i])
+		i++;
+	// printf("wker\n");
 	s->r.a_hight = i;
 	i = 0;
-	// while (s->b[-i] == s->r.b[i])
-		// i++;
+	while (s->r.b - i >= s->r.solution && s->r.b[-i] == s->b[-i])
+		i++;
 	s->r.b_hight = i;
+	// if (s->r.a_hight >= 6)
+	// {
+	// 	printf("blh:%d a:%d s0:%d sa:%d height:%d", blh, s->a[0], s->r.solution[0], s->r.a[0], s->r.a_hight);
+	// 	op_test(s, tt);
+	// 	printf("\n");
+	// }
 	// TODO: easy optimisation record the current solution op index, and compare if it's changed then run this op, might cause bugs idk.
 	// s->r.a;
 	return (0);
@@ -70,7 +77,7 @@ int	update_run(t_stack *s)
 // can probably remove
 int	do_next_op(t_stack *s, int i)
 {
-	update_run(s);
+	update_run(s, i);
 	if (i == SA)
 		return (sa(s));
 	else if (i == SB)
@@ -164,7 +171,12 @@ int	recursive_solver(t_stack *s, unsigned int *rs)
 			if (undo_op(s, *s->o.c)) // TODO: remove
 			// if (o.ud[i] == SUCCESS)
 				return (message_ret(ERROR, "undoing error\n"));
+			/*TEST*/if (*s->o.c == s->r.finish_me)
+				s->r.finish_me = EMPTY;
 			s->o.c -= 1;
+			
+			// /*TEST*/if (s->o.c[-1] == RA && s->r.finish_me == RA)
+			// 	printf("undid RA\n");
 		}
 	}
 	return (ERROR);

@@ -4,3 +4,4 @@ sort
 *.o
 push_swap
 checker
+scratch.c

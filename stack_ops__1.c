@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:58:14 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/10 12:06:02 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/16 17:46:45 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ra_(t_stack *s)
 	int	h;
 	
 	h = sh(s, 'a');
-	if (h <= 1)
+	if (h <= 3)
 		return (FAILURE);
 	t = *s->a;
 	while (h-- > 0)
@@ -65,7 +65,7 @@ int	rb_(t_stack *s)
 	int	h;
 	
 	h = sh(s, 'b');
-	if (h <= 1)
+	if (h <= 3)
 		return (FAILURE);
 	t = *s->b;
 	while (h-- > 0)

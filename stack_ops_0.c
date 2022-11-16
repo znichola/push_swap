@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 19:57:05 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/16 14:34:15 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/16 18:05:40 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	tg(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *))
 // Do nothing if there is only one or no elements.
 int	sa(t_stack *s)
 {
-	if (s->r.completion != EMPTY)
+	if (!(s->r.finish_me == EMPTY))
 		return (FAILURE);
 	if (*(s->a - 1) < *(s->a))
 		return (FAILURE);
@@ -71,7 +71,7 @@ int	sa(t_stack *s)
 // Do nothing if there is only one or no elements.
 int	sb(t_stack *s)
 {
-	if (s->r.completion != EMPTY)
+	if (!(s->r.finish_me == EMPTY))
 		return (FAILURE);
 	if (*(s->b - 1) < *(s->b))
 		return (FAILURE);
@@ -98,7 +98,7 @@ int	sb(t_stack *s)
 // wrapper: ss : sa and sb at the same time.
 int	ss(t_stack *s)
 {
-	if (s->r.completion != EMPTY)
+	if (!(s->r.finish_me == EMPTY))
 		return (FAILURE);
 	if (*s->o.c == SA || *s->o.c == SB || *s->o.c == SS)
 		return (FAILURE);

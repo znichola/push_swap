@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/16 13:55:41 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/16 15:30:49 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ int	finish_setup(t_stack *s)
 	s->r.b = NULL;
 	s->r.a_hight = 0;
 	s->r.a_hight = 0;
-	s->r.completion = -1;
+	s->r.finish_me = -1;
 	return (SUCCESS);
 }
 
