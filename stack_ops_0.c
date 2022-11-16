@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 19:57:05 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/10 13:49:49 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/16 14:34:15 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	tg(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *))
 // Do nothing if there is only one or no elements.
 int	sa(t_stack *s)
 {
+	if (s->r.completion != EMPTY)
+		return (FAILURE);
 	if (*(s->a - 1) < *(s->a))
 		return (FAILURE);
 	return (sa_(s));
@@ -69,15 +71,38 @@ int	sa(t_stack *s)
 // Do nothing if there is only one or no elements.
 int	sb(t_stack *s)
 {
+	if (s->r.completion != EMPTY)
+		return (FAILURE);
 	if (*(s->b - 1) < *(s->b))
 		return (FAILURE);
 	return (sb_(s));
 }
 
 // wrapper: ss : sa and sb at the same time.
+// int	ss(t_stack *s)
+// {
+// 	if (s->r.completion != EMPTY)
+// 		return (FAILURE);
+// 	if (*(s->a - 1) < *(s->a) && *(s->b - 1) < *(s->b)) //TODO: tg needs to be rewritten for this
+// 		return (FAILURE);
+// 	if (sa(s) == SUCCESS)
+// 	{
+// 		if (sb(s) == SUCCESS)
+// 			return (SUCCESS);
+// 		sa(s);
+// 	}
+// 	return (FAILURE);
+// 	// return (tg(s, sa_, sb_));
+// }
+
+// wrapper: ss : sa and sb at the same time.
 int	ss(t_stack *s)
 {
-	if (*(s->a - 1) < *(s->a) && *(s->b - 1) < *(s->b)) //TODO: tg needs to be rewritten for this
+	if (s->r.completion != EMPTY)
 		return (FAILURE);
+	if (*s->o.c == SA || *s->o.c == SB || *s->o.c == SS)
+		return (FAILURE);
+	// if (*(s->a - 1) < *(s->a) && *(s->b - 1) < *(s->b)) //TODO: tg needs to be rewritten for this
+	// 	return (FAILURE);
 	return (tg(s, sa_, sb_));
 }

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/14 10:27:20 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/16 11:26:03 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ int	foo(t_stack *s, t_stack *d)
 	d->r.solution = s->r.solution;
 	d->o.root = s->o.root;
 	d->o.c = s->o.c;
+	return (0);
 }
 
 int main(int ac, char **av)
@@ -144,7 +145,7 @@ int main(int ac, char **av)
 # ifdef TEST
 	printf("recursion:%d\n", rs);
 	op_test(&stack, tt);
-	printf("it took %d steps and there are %d instructions\n", recursive_steps, stack.o.c - stack.o.root + 1);
+	printf("it took %d steps and there are %ld instructions\n", recursive_steps, stack.o.c - stack.o.root + 1);
 	process_inputdata(&dupe, av[1]);
 	foo(&stack, &dupe);
 	ops_executor(&dupe, &op_arr);
@@ -156,4 +157,5 @@ int main(int ac, char **av)
 		write_op(stack.o.root[i]);
 	// printf("top of stack is:%d len_a:%d len_b:%d\n", *(stack.a), sh(&stack, 'a'), sh(&stack, 'b'));
 	// error_check(2, &stack);
+	return (0);
 }

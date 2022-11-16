@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/14 19:23:40 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/16 13:55:41 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int	find_solution(t_stack *s)
 				flag = 1;
 			}
 	}
+	s->r.s_end = s->r.solution + s->size - 1;
 	return (SUCCESS);
 }
 
@@ -124,9 +125,10 @@ int	bar(t_stack *s)
 	i = -1;
 	while (i++ < s->size - 1)
 	{
-		s->root_a[i];
+		// s->root_a[i];
 	}
 	// no idea what this funciton does
+	return (0);
 }
 
 int	finish_setup(t_stack *s)
@@ -137,8 +139,9 @@ int	finish_setup(t_stack *s)
 		return (freeret_1(ERROR, s->r.solution));
 	s->r.a = NULL;
 	s->r.b = NULL;
-	s->r.hight_a = 0;
-	s->r.hight_b = 0;
+	s->r.a_hight = 0;
+	s->r.a_hight = 0;
+	s->r.completion = -1;
 	return (SUCCESS);
 }
 

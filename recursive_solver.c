@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:59:56 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/14 10:14:19 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/16 14:02:09 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,35 @@ int	write_op(int i)
 	return (SUCCESS);
 }
 
+int	update_run(t_stack *s)
+{
+	int	i;
+
+	// printf("a:%d sol:%d end%d\n", *s->a, *s->r.solution, *s->r.s_end);
+	// for (int i = 0; i < s->size; i++)
+	// 	printf("%d\n", s->r.solution[i]);
+
+	// printf("some answer:%d\n", *findin_sorted(*s->a, s->r.solution, s->r.s_end));
+	// exit(0);
+	s->r.a = findin_sorted(*s->a, s->r.solution, s->r.s_end);
+	s->r.b = findin_sorted(*s->b, s->r.solution, s->r.s_end);
+	// i = 0;
+	// while (s->a[-i] == s->r.a[i])
+	// 	i++;
+	s->r.a_hight = i;
+	i = 0;
+	// while (s->b[-i] == s->r.b[i])
+		// i++;
+	s->r.b_hight = i;
+	// TODO: easy optimisation record the current solution op index, and compare if it's changed then run this op, might cause bugs idk.
+	// s->r.a;
+	return (0);
+}
+
 // can probably remove
 int	do_next_op(t_stack *s, int i)
 {
+	update_run(s);
 	if (i == SA)
 		return (sa(s));
 	else if (i == SB)
@@ -99,10 +125,6 @@ int	undo_op(t_stack *s, int i)
 }
 
 // TODO: funciton to update run information, used in next op.
-int	update_run(t_stack *s)
-{
-	s->r.a;
-}
 
 int	check_complete(t_stack *s)
 {

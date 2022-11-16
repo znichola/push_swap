@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:07:31 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/14 19:24:10 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/16 13:41:27 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,22 @@ int	freeret_3(int ret, void *x, void *y, void *z)
 	return (ret);
 }
 
+// assuming the list is biggest > smallest 
 int	*findin_sorted(int x, int *arr, int *arr_end)
 {
 	int	*t;
 
-	// printf("x:%d t:%p *t:%d diff:%d arr:%p end:%p\n", x, t, *t, arr_end - arr, arr, arr_end);
+	t = arr + ((arr_end - arr) / 2);
+	// printf("x:%d t:%d diff:%ld arr:%p end:%p\n", x, *t, arr_end - arr, arr, arr_end);
 	if (*arr_end == x)
 		return (arr_end);
 	if (*arr == x)
 		return (arr);
-	t = arr + ((arr_end - arr) / 2);
 	if (*t == x)
 		return (t);
-	if (arr_end - arr == 1)
+	if (arr_end - arr <= 1)
 		return (NULL);
-	if (*t < x)
+	if (*t > x)
 		return (findin_sorted(x, t + 1, arr_end));
 	return (findin_sorted(x, arr, t - 1));
 }
