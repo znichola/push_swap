@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_inputdata.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/16 15:30:49 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/18 15:43:12 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static int	countnums(char const *s)
 	return (count);
 }
 
+// static int	ft_atoi_read(int *n, char **str)
 static int	ft_atoi_read(int *n, char **str)
 {
 	int	s;
@@ -116,21 +117,6 @@ int	init_ops(t_stack *s)
 	return (SUCCESS);
 }
 
-int	bar(t_stack *s)
-{
-	int	i;
-	int	e;
-	int	*t;
-
-	i = -1;
-	while (i++ < s->size - 1)
-	{
-		// s->root_a[i];
-	}
-	// no idea what this funciton does
-	return (0);
-}
-
 int	finish_setup(t_stack *s)
 {
 	if (find_solution(s))
@@ -145,7 +131,7 @@ int	finish_setup(t_stack *s)
 	return (SUCCESS);
 }
 
-int	process_inputdata(t_stack *stack, char *str)
+int	process_inputdata_old(t_stack *stack, char *str)
 {
 	int	i;
 	int	t;
@@ -166,6 +152,33 @@ int	process_inputdata(t_stack *stack, char *str)
 			return (FAILURE);
 		str++;
 	}
+	if (finish_setup(stack))
+		return (freeret_2(ERROR, stack->root_a, stack->root_b));
+	return (SUCCESS);
+}
+
+int	process_inputdata(t_stack *stack, char **str, int n)
+{
+	int	t;
+	int	i;
+	// char	**tmp;
+
+	// tmp = str;
+	if (n < 1)
+		return (FAILURE);
+	stack->root_a = (int *)malloc(sizeof(int) * n);
+	if (!stack->root_a)
+		return (ERROR);
+	stack->root_b = (int *)malloc(sizeof(int) * n);
+	if (!stack->root_b)
+		return (freeret_1(ERROR, stack->root_a));
+	stack->size = n;
+	stack->a = stack->root_a + n - 1;
+	stack->b = stack->root_b - 1;
+	i = 0;
+	while (n--)
+		if (add_num(stack, n, &str[i++]))
+			return (FAILURE);
 	if (finish_setup(stack))
 		return (freeret_2(ERROR, stack->root_a, stack->root_b));
 	return (SUCCESS);

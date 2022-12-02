@@ -6,17 +6,17 @@
 #    By: znichola <znichola@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 07:44:20 by znichola          #+#    #+#              #
-#    Updated: 2022/11/16 12:55:57 by znichola         ###   ########.fr        #
+#    Updated: 2022/11/16 23:44:48 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME	=	push_swap
 
 FILES	=	main              stack_ops_0       stack_ops__1 \
 			process_inputdata stack_ops_1       stack_ops__2 \
 			recursive_solver  stack_ops_2       util         \
 			stack_data        stack_ops__0
-SRC		+=	$(addsuffix .c, $(FILES))
+SRC		=	$(addsuffix .c, $(FILES))
 OBJ		=	$(SRC:.c=.o)
 
 INCLUDE	=	push_swap.h

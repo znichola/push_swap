@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:23:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/16 18:39:15 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/16 21:57:17 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define ERROR -1
 # define EMPTY -1
 
-# define SA 0
+# define SA 0 
 # define SB 1
 # define SS 2
 # define PA 3
@@ -79,7 +79,10 @@ typedef struct s_oparrs
 	op_array	undo[OPS_NUM];
 }t_oparrs;
 
-int	process_inputdata(t_stack *stack, char *str);
+// process inputdata
+int	process_inputdata_old(t_stack *stack, char *str);
+int	process_inputdata(t_stack *stack, char **str, int n);
+
 
 // main
 int	tt(t_stack *s);
@@ -91,7 +94,7 @@ int	write_op(int i);
 int	do_next_op(t_stack *s, int i);
 int	recursive_solver(t_stack *s, unsigned int *rs);
 
-// util
+// utils
 int	message_ret(int sig, char *msg);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 int	freeret_1(int ret, void *x);

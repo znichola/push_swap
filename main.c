@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/16 11:26:03 by znichola         ###   ########.fr       */
+/*   Updated: 2022/11/16 20:29:24 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,25 @@ int	foo(t_stack *s, t_stack *d)
 	return (0);
 }
 
+int	dupe_stack_a(t_stack *s, t_stack *d)
+{
+	int	i;
+
+	d->size = s->size;
+	d->root_a = (int *)malloc(sizeof(int) * d->size);
+	if (!d->root_a)
+		return (ERROR);
+	d->root_b = (int *)malloc(sizeof(int) * d->size);
+	if (!d->root_b)
+		return (freeret_1(ERROR, d->root_a));
+	d->a = d ->root_a + i - 1;
+	d->b = d->root_b - 1;
+	i = -1;
+	while (i++ < s->size - 1)
+		d->root_a[i] = s->root_a[i];
+	return (0);
+}
+
 int main(int ac, char **av)
 {
 	t_stack			stack;
@@ -138,15 +157,18 @@ int main(int ac, char **av)
 	t_oparrs		op_arr;
 	unsigned int	recursive_steps = 0;
 
-	error_check(process_inputdata(&stack, av[1]), &stack);
+	error_check(process_inputdata(&stack, av + 1, ac - 1), &stack);
 	fill_opperations(&op_arr);
+	dupe_stack_a(&stack, &dupe);
 	int rs = recursive_solver(&stack, &recursive_steps);
 	
 # ifdef TEST
 	printf("recursion:%d\n", rs);
 	op_test(&stack, tt);
 	printf("it took %d steps and there are %ld instructions\n", recursive_steps, stack.o.c - stack.o.root + 1);
-	process_inputdata(&dupe, av[1]);
+	// process_inputdata(&dupe, av + 1, ac - 1);
+	printf("test[%s]\n", av[1]);
+	op_test(&dupe, tt);
 	foo(&stack, &dupe);
 	ops_executor(&dupe, &op_arr);
 	op_test(&dupe, tt);
