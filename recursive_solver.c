@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:59:56 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/08 13:52:53 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:36:42 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,35 +146,34 @@ int	check_complete(t_stack *s)
 	return (SUCCESS);
 }
 
-int	recursive_solver(t_stack *s, unsigned int *rs)
+int	recursive_solver(t_app *a)
 {
 	int	i;
 
-	if (check_complete(s) == SUCCESS)
+	if (check_complete(&a->s) == SUCCESS)
 		return (SUCCESS);
-	if (s->o.c - s->o.root + 1 == DEPTH)
+	if (a->s.o.c - a->s.o.root + 1 == DEPTH)
 		return (FAILURE);
 	i = -1;
 	while (i++ < OPS_NUM)
 	{
 		// TODO: make func to update the run information, used by next op
-		if (do_next_op(s, i) == SUCCESS) //TODO:remove
+		if (do_next_op(&a->s, i) == SUCCESS) //TODO:remove
 		// if (o.op[i] == SUCCESS)
 		{
-			s->o.c += 1;
-			*s->o.c = i;
+			a->s.o.c += 1;
+			*a->s.o.c = i;
 			// printf("here depth:%d\n", o.c - o.root + 1);
-			*rs += 1;
-			if (recursive_solver(s, rs) == SUCCESS)
+			a->recursive_steps += 1;
+			if (recursive_solver(a) == SUCCESS)
 				return (SUCCESS); // SUCCESS
 			// write(1, &"undoing ", 8); write_op(i);
-			if (undo_op(s, *s->o.c)) // TODO: remove
+			if (undo_op(&a->s, *a->s.o.c)) // TODO: remove
 			// if (o.ud[i] == SUCCESS)
 				return (message_ret(ERROR, "undoing error\n"));
-			/*TEST*/if (*s->o.c == s->r.finish_me)
-				s->r.finish_me = EMPTY;
-			s->o.c -= 1;
-			
+			/*TEST*/if (*a->s.o.c == a->s.r.finish_me)
+				a->s.r.finish_me = EMPTY;
+			a->s.o.c -= 1;
 			// /*TEST*/if (s->o.c[-1] == RA && s->r.finish_me == RA)
 			// 	printf("undid RA\n");
 		}

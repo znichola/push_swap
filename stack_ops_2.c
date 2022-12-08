@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_ops_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:59:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/16 18:15:54 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:30:20 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ int	rrr(t_stack *s)
 	else
 		s->r.finish_me = EMPTY;
 	return (SUCCESS);
+}
+
+int	tt(t_stack *s)
+{
+	return(FAILURE);
 }
 
 // TODO: maybe finish this ?

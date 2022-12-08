@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 19:23:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/08 13:58:18 by znichola         ###   ########.fr       */
+/*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
+/*   Updated: 2022/12/08 16:40:07 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,68 +79,91 @@ typedef struct s_oparrs
 	op_array	undo[OPS_NUM];
 }t_oparrs;
 
+typedef	struct s_app
+{
+	t_stack s;
+	t_stack d;
+	unsigned int	recursive_steps;
+	op_array	opp[OPS_NUM];
+	op_array	opp_[OPS_NUM];
+	op_array	undo[OPS_NUM];
+	op_array	opp_mod[OPS_NUM];
+} t_app;
+
+
 // process inputdata
-int	process_inputdata_old(t_stack *stack, char *str);
-int	process_inputdata(t_stack *stack, char **str, int n);
+int		process_inputdata_old(t_stack *stack, char *str);
+int		process_inputdata(t_stack *stack, char **str, int n);
 
 
 // main
-int	tt(t_stack *s);
-void op_test(t_stack *s, int (*op)(t_stack *));
+int		tt(t_stack *s);
+void	 op_test(t_stack *s, int (*op)(t_stack *));
 
 // recursive solver
-int	init_ops(t_stack *s);
-int	write_op(int i);
-int	do_next_op(t_stack *s, int i);
-int	recursive_solver(t_stack *s, unsigned int *rs);
+int		init_ops(t_stack *s);
+int		write_op(int i);
+int		do_next_op(t_stack *s, int i);
+int		recursive_solver(t_app *a);
+
+// init
+void	init_app(t_app *a);
 
 // stack data
-int	print_stack(t_stack *s);
+int		print_stack(t_stack *s);
 
 // utils
-int	message_ret(int sig, char *msg);
+int		message_ret(int sig, char *msg);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
-int	freeret_1(int ret, void *x);
-int	freeret_2(int ret, void *x, void *y);
-int	freeret_3(int ret, void *x, void *y, void *z);
-int	*findin_sorted(int x, int *arr, int *arr_end);
+int		freeret_1(int ret, void *x);
+int		freeret_2(int ret, void *x, void *y);
+int		freeret_3(int ret, void *x, void *y, void *z);
+int		*findin_sorted(int x, int *arr, int *arr_end);
+
+// debug
+int		dupe_stack_a(t_stack *s, t_stack *d);
+int		foo(t_stack *s, t_stack *d);
+int		ops_executor(t_stack *s, op_array *opp);
+void	error_check(int ip, t_stack *s);
+void	op_test(t_stack *s, int (*op)(t_stack *));
 
 // stack ops 0
-int	sh(t_stack *s, char x);
-int	tg(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *));
-int	sa(t_stack *s);
-int	sb(t_stack *s);
-int	ss(t_stack *s);
+int		sh(t_stack *s, char x);
+int		tg(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *));
+int		sa(t_stack *s);
+int		sb(t_stack *s);
+int		ss(t_stack *s);
 
 // stack ops 1
-int	pa(t_stack *s);
-int	pb(t_stack *s);
-int	ra(t_stack *s);
-int	rb(t_stack *s);
-int	rr(t_stack *s);
+int		pa(t_stack *s);
+int		pb(t_stack *s);
+int		ra(t_stack *s);
+int		rb(t_stack *s);
+int		rr(t_stack *s);
 
 // stack ops 2
-int	rra(t_stack *s);
-int	rrb(t_stack *s);
-int	rrr(t_stack *s);
+int		rra(t_stack *s);
+int		rrb(t_stack *s);
+int		rrr(t_stack *s);
+int		tt(t_stack *s);
 
 // stack ops _0
-int	tg_(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *));
-int	sa_(t_stack *s);
-int	sb_(t_stack *s);
-int	ss_(t_stack *s);
+int		tg_(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *));
+int		sa_(t_stack *s);
+int		sb_(t_stack *s);
+int		ss_(t_stack *s);
 
 // stack ops _1
-int	pa_(t_stack *s);
-int	pb_(t_stack *s);
-int	ra_(t_stack *s);
-int	rb_(t_stack *s);
-int	rr_(t_stack *s);
+int		pa_(t_stack *s);
+int		pb_(t_stack *s);
+int		ra_(t_stack *s);
+int		rb_(t_stack *s);
+int		rr_(t_stack *s);
 
 // stack ops _2
-int	rra_(t_stack *s);
-int	rrb_(t_stack *s);
-int	rrr_(t_stack *s);
+int		rra_(t_stack *s);
+int		rrb_(t_stack *s);
+int		rrr_(t_stack *s);
 
 #endif /* push swap*/
 

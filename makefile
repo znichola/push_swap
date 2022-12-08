@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 07:44:20 by znichola          #+#    #+#              #
-#    Updated: 2022/12/08 13:37:33 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/08 15:43:51 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME	=	push_swap
 FILES	=	main              stack_ops_0       stack_ops__1 \
 			process_inputdata stack_ops_1       stack_ops__2 \
 			recursive_solver  stack_ops_2       util         \
-			stack_data        stack_ops__0
+			stack_data        stack_ops__0      debug        \
+			init
 SRC		=	$(addsuffix .c, $(FILES))
 OBJ		=	$(SRC:.c=.o)
 
