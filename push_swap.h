@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 19:23:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/16 21:57:17 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:58:18 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ int	init_ops(t_stack *s);
 int	write_op(int i);
 int	do_next_op(t_stack *s, int i);
 int	recursive_solver(t_stack *s, unsigned int *rs);
+
+// stack data
+int	print_stack(t_stack *s);
 
 // utils
 int	message_ret(int sig, char *msg);

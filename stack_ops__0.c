@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_ops__0.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 19:57:05 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/10 12:19:42 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:55:37 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	tg_(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *))
 {
 	if (x(s) + y(s) == FAILURE * 2)
 	{
-		write(1, &"warning: double fail .. impossible and dangerous\n", 50);
+		write(1, &"_warning: double fail .. impossible and dangerous\n", 51);
 		return (FAILURE);
 	}
 	return (SUCCESS);

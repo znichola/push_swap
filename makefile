@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: znichola <znichola@student.42.fr>          +#+  +:+       +#+         #
+#    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 07:44:20 by znichola          #+#    #+#              #
-#    Updated: 2022/11/16 23:44:48 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/08 13:37:33 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,4 +44,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : $(NAME) all re clean fclean bonus
+.PHONY : all re clean fclean bonus

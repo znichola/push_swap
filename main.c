@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/16 20:29:24 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/08 14:16:39 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,11 +142,11 @@ int	dupe_stack_a(t_stack *s, t_stack *d)
 	d->root_b = (int *)malloc(sizeof(int) * d->size);
 	if (!d->root_b)
 		return (freeret_1(ERROR, d->root_a));
-	d->a = d ->root_a + i - 1;
-	d->b = d->root_b - 1;
 	i = -1;
 	while (i++ < s->size - 1)
 		d->root_a[i] = s->root_a[i];
+	d->a = d->root_a + i - 1;
+	d->b = d->root_b - 1;
 	return (0);
 }
 
@@ -161,7 +161,7 @@ int main(int ac, char **av)
 	fill_opperations(&op_arr);
 	dupe_stack_a(&stack, &dupe);
 	int rs = recursive_solver(&stack, &recursive_steps);
-	
+
 # ifdef TEST
 	printf("recursion:%d\n", rs);
 	op_test(&stack, tt);

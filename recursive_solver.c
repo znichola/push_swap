@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   recursive_solver.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:59:56 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/16 19:07:50 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:52:53 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,3 +181,4 @@ int	recursive_solver(t_stack *s, unsigned int *rs)
 	}
 	return (ERROR);
 }
+
