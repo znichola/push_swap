@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:59:56 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/08 16:36:42 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/08 17:12:50 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,20 +157,26 @@ int	recursive_solver(t_app *a)
 	i = -1;
 	while (i++ < OPS_NUM)
 	{
+		// printf("op adress:%p\n", &a->opp[i]);
 		// TODO: make func to update the run information, used by next op
-		if (do_next_op(&a->s, i) == SUCCESS) //TODO:remove
-		// if (o.op[i] == SUCCESS)
+		// if (do_next_op(&a->s, i) == SUCCESS) //TODO:remove
+		// printf("lsdf\n");
+		// print_stack(&a->s);
+		
+		if (a->opp_[i](&a->s) == SUCCESS)
 		{
 			a->s.o.c += 1;
 			*a->s.o.c = i;
-			// printf("here depth:%d\n", o.c - o.root + 1);
+			// printf("here depth:%d\n", (int)a->s.o.c - (int)a->s.o.root + 1);
 			a->recursive_steps += 1;
 			if (recursive_solver(a) == SUCCESS)
 				return (SUCCESS); // SUCCESS
 			// write(1, &"undoing ", 8); write_op(i);
-			if (undo_op(&a->s, *a->s.o.c)) // TODO: remove
+			
+			if (a->undo[i](&a->s))
+			// if (undo_op(&a->s, *a->s.o.c)) // TODO: remove
 			// if (o.ud[i] == SUCCESS)
-				return (message_ret(ERROR, "undoing error\n"));
+				return (printf("i:%d", i) + message_ret(ERROR, "undoing error\n"));
 			/*TEST*/if (*a->s.o.c == a->s.r.finish_me)
 				a->s.r.finish_me = EMPTY;
 			a->s.o.c -= 1;
