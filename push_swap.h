@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 00:26:20 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 12:39:30 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 #  define DEPTH 15
 # endif
 
-# define TEST
+#undef DEBUG_TEST
+# define DEBUG_TEST 1
 
 # define SUCCESS 0
 # define FAILURE 1

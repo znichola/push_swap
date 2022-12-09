@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:33:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 01:05:37 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 12:40:40 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,19 @@ int	slow_recursive_solver(t_app *a)
 			// if (DEBUG_TEST) {ft_printf("%d:", i); write_op_row(i); }
 			// ft_printf("%d ", i);
 			a->s.o.c += 1;
-			*a->s.o.c = i;
+ 			*a->s.o.c = i;
 			a->recursive_steps += 1;
 			if (slow_recursive_solver(a) == SUCCESS)
 			{
 				copy_solution(a);
-				if (DEBUG_TEST)
-				{
-					ft_printf("\nsolution copy :			   ");
-					for (int i = 0; i < a->best_sol.c - a->best_sol.root + 1; i++)
-					{
-						write_op_row(a->best_sol.root[i]);
-					}
-				}
+				// if (DEBUG_TEST)
+				// {
+				// 	ft_printf("\nsolution copy :			   ");
+				// 	for (int i = 0; i < a->best_sol.c - a->best_sol.root + 1; i++)
+				// 	{
+				// 		write_op_row(a->best_sol.root[i]);
+				// 	}
+				// }
 				slow_optimiser(a);
 				if (a->undo[i](&a->s))
 					return (ft_printf("steps:%u i:%d ", a->recursive_steps, i)

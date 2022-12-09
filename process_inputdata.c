@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/08 18:07:03 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 12:15:43 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	add_num(t_stack *s, int i, char **str)
 		return (FAILURE);
 	}
 	e = i;
-	while (e++ < s->size)
+	while (++e < s->size) //TODO: swapped to ++e instead of e++
 		if (s->root_a[e] == t)
 		{
 			// write(1, &"duplicate num\n", 14);
@@ -94,7 +94,7 @@ int	find_solution(t_stack *s)
 	{
 		flag = 0;
 		i = -1;
-		while (i++ < s->size - 1) // overflow checked here!
+		while (i++ < s->size - 2) // overflow checked here!
 			if (s->r.solution[i] < s->r.solution[i + 1]) // overflow check
 			{
 				t = s->r.solution[i];
@@ -113,7 +113,7 @@ int	init_ops(t_stack *s)
 	if (!s->o.root)
 		return (ERROR);
 	s->o.c = s->o.root - 1;
-	*s->o.c = 0;
+	// *s->o.c = 0; //TODO: this seems bad? and not needed and an overflow
 	return (SUCCESS);
 }
 
@@ -134,7 +134,7 @@ int	finish_setup(t_stack *s)
 int	process_inputdata_old(t_stack *stack, char *str)
 {
 	int	i;
-	int	t;
+	// int	t;
 	
 	i = countnums(str);
 	stack->root_a = (int *)malloc(sizeof(int) * i);
@@ -157,9 +157,19 @@ int	process_inputdata_old(t_stack *stack, char *str)
 	return (SUCCESS);
 }
 
+int	add_single_num(t_stack *s, int index, char *str)
+{
+	int	number;
+
+	if (ft_atoi_read(&number, &str))
+		return (FAILIUR);
+	s->root_a[index] = number;
+	return (SUCCESS);
+}
+
 int	process_inputdata(t_stack *stack, char **str, int n)
 {
-	int	t;
+	// int	t;
 	int	i;
 	// char	**tmp;
 
@@ -177,8 +187,9 @@ int	process_inputdata(t_stack *stack, char **str, int n)
 	stack->b = stack->root_b - 1;
 	i = 0;
 	while (n--)
-		if (add_num(stack, n, &str[i++]))
-			return (FAILURE);
+		if (add_single_num(stack, n, str[i++]))
+			return (freeret_2(ERROR, stack->root_a, stack->root_b));
+			// return (FAILURE); //TODO: what about free?
 	if (finish_setup(stack))
 		return (freeret_2(ERROR, stack->root_a, stack->root_b));
 	return (SUCCESS);

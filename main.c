@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 00:58:00 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 12:38:36 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int main(int ac, char **av)
 {
-	t_app			app;
+	t_app	app;
 	
 	init_app(&app);
 
