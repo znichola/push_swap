@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 19:57:05 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/08 13:55:37 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/08 18:54:02 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ int	tg_(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *))
 {
 	if (x(s) + y(s) == FAILURE * 2)
 	{
-		write(1, &"_warning: double fail .. impossible and dangerous\n", 51);
+		// write(1, &"_warning: double fail .. impossible and dangerous\n", 51); //TODO: important things happen here
 		return (FAILURE);
 	}
 	return (SUCCESS);
 }
+// this funciton above is liable to be tricky
+// must be carefull to understand it's output
+// if there are 3 numbers or less it will always trigger the double fail.
+// don't get fooled by this again!
 
 // Swap the first 2 elements at the top of stack a.
 // Do nothing if there is only one or no elements.
@@ -45,6 +49,8 @@ int	sb_(t_stack *s)
 {
 	int	t;
 
+	// ft_printf("ksjhdf\n");
+	// print_stack(s);
 	if (!(sh(s, 'b') > 1))
 		return (FAILURE);
 	t = *(s->b);

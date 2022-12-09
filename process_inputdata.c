@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/08 15:46:50 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/08 18:07:03 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	init_ops(t_stack *s)
 	if (!s->o.root)
 		return (ERROR);
 	s->o.c = s->o.root - 1;
-	// fill_opperations(o);
+	*s->o.c = 0;
 	return (SUCCESS);
 }
 

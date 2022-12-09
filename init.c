@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:14:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/08 15:44:04 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 01:10:13 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,10 @@ void	init_app(t_app *a)
 	fill_opps_(a->opp_);
 	fill_undo(a->undo);
 	fill_mod(a->opp_mod);
+	a->max_depth = DEPTH;
 	a->recursive_steps = 0;
+	a->best_sol.root = (int *)malloc(sizeof(int) * OPS_NUM);
+	// if (!a->best_sol.root)
+		// return(NULL); //TODO: reactivate this malloc
+	a->best_sol.c = a->best_sol.root;
 }

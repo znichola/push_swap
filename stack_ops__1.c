@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_ops__1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:58:14 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/16 17:46:45 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 00:20:47 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ra_(t_stack *s)
 	int	h;
 	
 	h = sh(s, 'a');
-	if (h <= 3)
+	if (h < 3) //TODO: changing this to not include 3!
 		return (FAILURE);
 	t = *s->a;
 	while (h-- > 0)
@@ -65,7 +65,7 @@ int	rb_(t_stack *s)
 	int	h;
 	
 	h = sh(s, 'b');
-	if (h <= 3)
+	if (h < 3) //TODO: changed to not include 3!
 		return (FAILURE);
 	t = *s->b;
 	while (h-- > 0)

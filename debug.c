@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:09:04 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/08 16:38:34 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 00:52:09 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,28 @@ void	error_check(int ip, t_stack *s)
 	}
 }
 
-int	ops_executor(t_stack *s, op_array *opp)
+int	ops_executor(t_app *a)
 {
-	for (int i = 0; i < s->o.c - s->o.root + 1; i ++)
+	for (int i = 0; i < a->d.o.c - a->d.o.root + 1; i ++)
 	{
-		// printf("\ni:%d %d\n\n", i, i);
-		opp[s->o.root[i]](s);
-		// do_next_op(s, o->root[i]);
-		// write_op(s->o->root[i]);
-		// op_test(s, op_arr[o->root[i]]);
+		// printf("i:%d ", i);
+		// print_stack(&a->d);
+		write_op(a->best_sol.root[i]);
+		a->opp[a->best_sol.root[i]](&a->d);
 	}
+
+	// for (int i = 0; i < s->o.c - s->o.root + 1; i ++)
+	// {
+	// 	// printf("\ni:%d %d\n\n", i, i);
+	// 	opp[s->o.root[i]](s);
+	// 	// do_next_op(s, o->root[i]);
+	// 	// write_op(s->o->root[i]);
+	// 	// op_test(s, op_arr[o->root[i]]);
+	// }
 	return (SUCCESS);
 }
 
+// TODO: remove redundent function
 int	foo(t_stack *s, t_stack *d)
 {
 	d->r.solution = s->r.solution;
@@ -111,4 +120,58 @@ int	dupe_stack_a(t_stack *s, t_stack *d)
 	d->a = d->root_a + i - 1;
 	d->b = d->root_b - 1;
 	return (0);
+}
+
+void	write_op_row(int i)
+{
+	if (i == SA)
+		ft_printf("sa");
+	else if (i == SB)
+		ft_printf("sb");
+	else if (i == SS)
+		ft_printf("ss");
+	else if (i == PA)
+		ft_printf("pa");
+	else if (i == PB)
+		ft_printf("pb");
+	else if (i == RA)
+		ft_printf("ra");
+	else if (i == RB)
+		ft_printf("rb");
+	else if (i == RR)
+		ft_printf("rr");
+	else if (i == RRA)
+		ft_printf("rra");
+	else if (i == RRB)
+		ft_printf("rrb");
+	else if (i == RR)
+		ft_printf("rrr");
+	ft_printf(" ");
+}
+
+int	write_op(int i)
+{
+	if (i == 0)
+		write(1, &"sa\n", 3);
+	else if (i == 1)
+		write(1, &"sb\n", 3);
+	else if (i == 2)
+		write(1, &"ss\n", 3);
+	else if (i == 3)
+		write(1, &"pa\n", 3);
+	else if (i == 4)
+		write(1, &"pb\n", 3);
+	else if (i == 5)
+		write(1, &"ra\n", 3);
+	else if (i == 6)
+		write(1, &"rb\n", 3);
+	else if (i == 7)
+		write(1, &"rr\n", 3);
+	else if (i == 8)
+		write(1, &"rra\n", 4);
+	else if (i == 9)
+		write(1, &"rrb\n", 4);
+	else if (i == 10)
+		write(1, &"rrr\n", 4);
+	return (SUCCESS);
 }

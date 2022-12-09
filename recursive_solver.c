@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:59:56 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/08 17:12:50 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 00:51:53 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,6 @@
 
 // resursilvy check all opoerations with the 
 // given stack untill one yields a result below the depth threashold
-
-int	write_op(int i)
-{
-	if (i == 0)
-		write(1, &"sa\n", 3);
-	else if (i == 1)
-		write(1, &"sb\n", 3);
-	else if (i == 2)
-		write(1, &"ss\n", 3);
-	else if (i == 3)
-		write(1, &"pa\n", 3);
-	else if (i == 4)
-		write(1, &"pb\n", 3);
-	else if (i == 5)
-		write(1, &"ra\n", 3);
-	else if (i == 6)
-		write(1, &"rb\n", 3);
-	else if (i == 7)
-		write(1, &"rr\n", 3);
-	else if (i == 8)
-		write(1, &"rra\n", 4);
-	else if (i == 9)
-		write(1, &"rrb\n", 4);
-	else if (i == 10)
-		write(1, &"rrr\n", 4);
-	return (SUCCESS);
-}
 
 int	update_run(t_stack *s, int blh)
 {
@@ -176,7 +149,6 @@ int	recursive_solver(t_app *a)
 			if (a->undo[i](&a->s))
 			// if (undo_op(&a->s, *a->s.o.c)) // TODO: remove
 			// if (o.ud[i] == SUCCESS)
-				return (printf("i:%d", i) + message_ret(ERROR, "undoing error\n"));
 			/*TEST*/if (*a->s.o.c == a->s.r.finish_me)
 				a->s.r.finish_me = EMPTY;
 			a->s.o.c -= 1;

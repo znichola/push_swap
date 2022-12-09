@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 19:57:05 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/08 14:27:47 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/08 21:58:25 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ int	tg(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *))
 
 	if (x(s) + y(s) == FAILURE * 2)
 	{
-		write(1, &"warning: double fail .. impossible and dangerous\n", 50);
-		print_stack(s);
+		// write(1, &"warning: double fail .. impossible and dangerous\n", 50); // TODO: see other warning
+		// print_stack(s);
 		return (FAILURE);
 	}
 	return (SUCCESS);

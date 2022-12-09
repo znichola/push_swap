@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/08 16:40:07 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 00:26:20 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# include "libft/libft.h"
+
 # ifndef DEPTH
-#  define DEPTH 10
+#  define DEPTH 15
 # endif
 
 # define TEST
@@ -73,21 +75,23 @@ typedef struct s_stack
 // function pointer
 typedef int (*op_array)(t_stack *);
 
-typedef struct s_oparrs
-{
-	op_array	opp[OPS_NUM];
-	op_array	undo[OPS_NUM];
-}t_oparrs;
+// typedef struct s_oparrs
+// {
+// 	op_array	opp[OPS_NUM];
+// 	op_array	undo[OPS_NUM];
+// }t_oparrs;
 
 typedef	struct s_app
 {
-	t_stack s;
-	t_stack d;
+	t_stack			s;
+	t_stack			d;
+	int				max_depth;
 	unsigned int	recursive_steps;
-	op_array	opp[OPS_NUM];
-	op_array	opp_[OPS_NUM];
-	op_array	undo[OPS_NUM];
-	op_array	opp_mod[OPS_NUM];
+	t_ops			best_sol;
+	op_array		opp[OPS_NUM];
+	op_array		opp_[OPS_NUM];
+	op_array		undo[OPS_NUM];
+	op_array		opp_mod[OPS_NUM];
 } t_app;
 
 
@@ -104,7 +108,12 @@ void	 op_test(t_stack *s, int (*op)(t_stack *));
 int		init_ops(t_stack *s);
 int		write_op(int i);
 int		do_next_op(t_stack *s, int i);
+int		check_complete(t_stack *s);
 int		recursive_solver(t_app *a);
+
+// slow recursive solver
+int		slow_recursive_solver(t_app *a);
+int		slow_optimiser(t_app *a);
 
 // init
 void	init_app(t_app *a);
@@ -123,10 +132,10 @@ int		*findin_sorted(int x, int *arr, int *arr_end);
 // debug
 int		dupe_stack_a(t_stack *s, t_stack *d);
 int		foo(t_stack *s, t_stack *d);
-int		ops_executor(t_stack *s, op_array *opp);
+int	ops_executor(t_app *a);
 void	error_check(int ip, t_stack *s);
 void	op_test(t_stack *s, int (*op)(t_stack *));
-
+void	write_op_row(int i);
 // stack ops 0
 int		sh(t_stack *s, char x);
 int		tg(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *));

@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 07:44:20 by znichola          #+#    #+#              #
-#    Updated: 2022/12/08 16:58:18 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/09 01:09:04 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,25 +16,45 @@ FILES	=	main              stack_ops_0       stack_ops__1 \
 			process_inputdata stack_ops_1       stack_ops__2 \
 			recursive_solver  stack_ops_2       util         \
 			stack_data        stack_ops__0      debug        \
-			init
+			init slow_recursive_solver
 SRC		=	$(addsuffix .c, $(FILES))
 OBJ		=	$(SRC:.c=.o)
 
-INCLUDE	=	push_swap.h
+# INCLUDE	=	push_swap.h
 
 CC 		=	gcc
 # CFLAGS	=	-Wall -Werror -Wextra
-# CFLAGS	=	-g3 -fsanitize=address
-CFLAGS		= -g3
+CFLAGS	=	-g3 -fsanitize=address
+# CFLAGS		= -g3
 RM		=	rm -f
 
+INCLUDE	=	push_swap.h \
+			libft/libft.h \
+			libft/printf/ft_printf.h \
+			libft/get_next_line/get_next_line.h
+INC_PAR	=	$(addprefix -I, $(INCLUDE))
+
+# submodule
+# libft
+LIB_DIR	=	libft
+LIB_N	=	libft.a
+LIB		=	$(LIB_DIR)/$(LIB_N)
+
+
+# .c.o :
+#		 $(CC) $(CFLAGS) -I${INCLUDE} -c $< -o $(@)
+
 .c.o :
-		$(CC) $(CFLAGS) -I${INCLUDE} -c $< -o $(@)
+		$(CC) $(CFLAGS) -c $< -o $(@)
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) $(INCLUDE)
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -I$(INCLUDE)
+$(NAME) : $(LIB) $(OBJ) #$(INCLUDE)
+		$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(INC_PAR) -L$(LIB_DIR) -lft
+
+# $(NAME) : $(LIB) $(PUSH) $(OBJ)
+# 		$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(INC_PAR) -L$(LIB_DIR) -lft
+
 
 bonus : $(NAME)
 
@@ -45,5 +65,10 @@ fclean : clean
 	$(RM) $(NAME)
 
 re : fclean all
+
+# libft
+$(LIB):
+		$(MAKE) -C $(LIB_DIR) $(LIB_N)
+		cp $(LIB) $(NAME)
 
 .PHONY : all re clean fclean bonus

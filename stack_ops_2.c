@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:59:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/08 15:30:20 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/08 19:21:10 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	rrr(t_stack *s)
 	return (SUCCESS);
 }
 
+// does nothing, filler function
 int	tt(t_stack *s)
 {
 	return(FAILURE);
