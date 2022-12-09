@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:46:44 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 23:41:51 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/10 00:13:44 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	calc_median(t_app *a, t_qs *q, int *start, int *end)
 			list[i] = start[i];
 		bubble_sort(list, i);
 		start = list + i / 2;
-		end = list + i / 4;
+		end = list + i / 8;
 	}
 	q->median.n = *start;
 	q->median.p = findin_sorted(*start, a->s.r.solution, a->s.r.s_end);
@@ -60,8 +60,12 @@ int	quicksort(t_app *a)
 		if (*a->s.a <= q.median.n)
 		{
 			doaddopp(a, PB);
-			if (*a->s.b >= q.mmedian.n)
+			if (*a->s.b <= q.mmedian.n)
+			{
 				doaddopp(a, RB);
+				// if (sh(&a->s, 'b') > 2 && a->s.b[0] < a->s.b[-1])
+				// 	doaddopp(a, SB);
+			}
 		}
 		else
 			doaddopp(a, RA);
