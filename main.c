@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 22:57:41 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 23:50:16 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int main(int ac, char **av)
 	// ft_printf("after stack\n");
 	print_stack(&app.s);
 	// slow_recursive_solver(&app);
-	// for (int i = 0; i < app.s.o.c -app.s.o.root + 1; i++)
-	// 	write_op(app.s.o.root[i]);
+	for (int i = 0; i < app.s.o.c -app.s.o.root + 1; i++)
+		write_op(app.s.o.root[i]);
 		
 // # undef TEST
 // #define TEST

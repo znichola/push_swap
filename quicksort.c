@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:46:44 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 23:01:00 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 23:41:51 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,11 @@ int	quicksort(t_app *a)
 	if (sh(&a->s, 'a') < 4)
 	{
 		// ft_printf("QUICK SORT RECURSION OUT!\n");
-		// if (*a->s.a < *a->s.root_a)
-		// 	doaddopp(a, SA);
-		return (SUCCESS);
+		return (sort3(a));
+		return (0);
 	}
 	// print_stack(&a->s);
-	if (quicksort(a) == ERROR)
+	if (quicksort(a) != SUCCESS)
 		return (ERROR);
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 22:49:51 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 23:40:12 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,10 +114,12 @@ int		process_inputdata(t_stack *stack, char **str, int n);
 
 
 // main
+
 int		tt(t_stack *s);
 void	op_test(t_stack *s, int (*op)(t_stack *));
 
 // recursive solver
+
 int		init_ops(t_stack *s);
 int		write_op(int i);
 int		do_next_op(t_stack *s, int i);
@@ -125,10 +127,12 @@ int		check_complete(t_stack *s);
 int		recursive_solver(t_app *a);
 
 // slow recursive solver
+
 int		slow_recursive_solver(t_app *a);
 int		slow_optimiser(t_app *a);
 
 // init
+
 void	init_app(t_app *a);
 
 // quicksort
@@ -137,11 +141,16 @@ int		doaddopp(t_app *a, int opp);
 int		calc_median(t_app *a, t_qs *q, int *start, int *end);
 int		quicksort(t_app *a);
 
+// basic sort
+
+int	sort3(t_app *a);
 
 // stack data
+
 int		print_stack(t_stack *s);
 
 // utils
+
 int		message_ret(int sig, char *msg);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 int		freeret_1(int ret, void *x);
