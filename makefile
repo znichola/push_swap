@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 07:44:20 by znichola          #+#    #+#              #
-#    Updated: 2022/12/09 12:49:07 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/09 14:43:22 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FILES	=	main              stack_ops_0       stack_ops__1 \
 			process_inputdata stack_ops_1       stack_ops__2 \
 			recursive_solver  stack_ops_2       util         \
 			stack_data        stack_ops__0      debug        \
-			init slow_recursive_solver
+			init slow_recursive_solver quicksort basic_sort
 SRC		=	$(addsuffix .c, $(FILES))
 OBJ		=	$(SRC:.c=.o)
 
@@ -24,8 +24,8 @@ OBJ		=	$(SRC:.c=.o)
 
 CC 		=	gcc
 # CFLAGS	=	-Wall -Werror -Wextra
-# CFLAGS	=	-g3 -fsanitize=address
-CFLAGS		= -g3
+CFLAGS	=	-g3 -fsanitize=address
+# CFLAGS		= -g3
 RM		=	rm -f
 
 INCLUDE	=	push_swap.h \

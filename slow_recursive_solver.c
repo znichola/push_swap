@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:33:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 12:40:40 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 14:40:34 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,19 @@ int	slow_recursive_solver(t_app *a)
 	// }
 	while (++i < OPS_NUM)
 	{
-		// ft_printf("%d ", i);
-		if (a->opp_[i](&a->s) == SUCCESS)
+		// ft_printf("%d \n", i);
+		if (a->opp_mod[i](&a->s) == SUCCESS)
 		{
+			// ft_printf("%d \n", i);
 			// if (DEBUG_TEST)
 			// {
-			// 	ft_printf("\n");
-			// 	for (int i = 0; i < a->s.o.c - a->s.o.root + 1; i++)
-			// 		ft_printf(" ");
-			// 	ft_printf("%d: ", a->s.o.c - a->s.o.root + 1);
-			// 	write_op_row(i);
+				// if (a->s.o.c - a->s.o.root + 1 != a->max_depth - 1)
+					ft_printf("\n");
+				for (int i = 0; i < a->s.o.c - a->s.o.root + 1; i++)
+					ft_printf(" ");
+				// if (a->s.o.c - a->s.o.root + 1 != a->max_depth - 1)
+					ft_printf("%d: ", a->s.o.c - a->s.o.root + 1);
+				write_op_row(i);
 			// }
 			// if (DEBUG_TEST) {ft_printf("%d:", i); write_op_row(i); }
 			// ft_printf("%d ", i);

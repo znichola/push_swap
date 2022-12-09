@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:14:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 01:10:13 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 14:24:25 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,15 @@ void	fill_undo(op_array *o)
 
 void	fill_mod(op_array *o)
 {
-	o[0] = sa;
+	o[0] = sa_;
 	o[1] = tt;
 	o[2] = tt;
-	o[3] = tt;
-	o[4] = tt;
-	o[5] = ra;
+	o[3] = pa_;
+	o[4] = pb_;
+	o[5] = ra_;
 	o[6] = tt;
 	o[7] = tt;
-	o[8] = rra;
+	o[8] = rra_;
 	o[9] = tt;
 	o[10] = tt;
 }

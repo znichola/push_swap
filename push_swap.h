@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 12:39:30 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 14:26:45 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "libft/libft.h"
 
 # ifndef DEPTH
-#  define DEPTH 15
+#  define DEPTH 6
 # endif
 
 #undef DEBUG_TEST
@@ -131,13 +131,16 @@ int		freeret_3(int ret, void *x, void *y, void *z);
 int		*findin_sorted(int x, int *arr, int *arr_end);
 
 // debug
+
 int		dupe_stack_a(t_stack *s, t_stack *d);
 int		foo(t_stack *s, t_stack *d);
 int	ops_executor(t_app *a);
 void	error_check(int ip, t_stack *s);
 void	op_test(t_stack *s, int (*op)(t_stack *));
 void	write_op_row(int i);
+
 // stack ops 0
+
 int		sh(t_stack *s, char x);
 int		tg(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *));
 int		sa(t_stack *s);
@@ -145,6 +148,7 @@ int		sb(t_stack *s);
 int		ss(t_stack *s);
 
 // stack ops 1
+
 int		pa(t_stack *s);
 int		pb(t_stack *s);
 int		ra(t_stack *s);
@@ -152,18 +156,21 @@ int		rb(t_stack *s);
 int		rr(t_stack *s);
 
 // stack ops 2
+
 int		rra(t_stack *s);
 int		rrb(t_stack *s);
 int		rrr(t_stack *s);
 int		tt(t_stack *s);
 
 // stack ops _0
+
 int		tg_(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *));
 int		sa_(t_stack *s);
 int		sb_(t_stack *s);
 int		ss_(t_stack *s);
 
 // stack ops _1
+
 int		pa_(t_stack *s);
 int		pb_(t_stack *s);
 int		ra_(t_stack *s);
@@ -171,6 +178,7 @@ int		rb_(t_stack *s);
 int		rr_(t_stack *s);
 
 // stack ops _2
+
 int		rra_(t_stack *s);
 int		rrb_(t_stack *s);
 int		rrr_(t_stack *s);
