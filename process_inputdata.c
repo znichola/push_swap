@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 12:15:43 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 12:50:44 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,11 +169,8 @@ int	add_single_num(t_stack *s, int index, char *str)
 
 int	process_inputdata(t_stack *stack, char **str, int n)
 {
-	// int	t;
 	int	i;
-	// char	**tmp;
 
-	// tmp = str;
 	if (n < 1)
 		return (FAILURE);
 	stack->root_a = (int *)malloc(sizeof(int) * n);
