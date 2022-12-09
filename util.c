@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:07:31 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/16 13:41:27 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 19:40:47 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,3 +103,29 @@ int	*findin_unsorted(int x, int *arr, int size)
 // 	}
 // 	return (0);
 // }
+
+void	bubble_sort(int *tab, int size)
+{
+	int	i;
+	int	f;
+	int	t;
+
+	f = 1;
+	i = 0;
+	while (i < size - 1)
+	{
+		if (tab[i] > tab[i + 1])
+		{
+			t = tab[i];
+			tab[i] = tab[i + 1];
+			tab[i + 1] = t;
+			f = 0;
+		}
+		i ++;
+	}	
+	if (f == 1)
+	{
+		return ;
+	}
+	bubble_sort(tab, size);
+}

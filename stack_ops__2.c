@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:59:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 15:09:44 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 19:44:15 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	rra_(t_stack *s) //TODO: ! some deep problem here! to come back to, make && 
 	int	h;
 	int	i;
 	
-	ft_printf("doing rra\n");
-	print_stack(s);
+	// ft_printf("doing rra\n");
+	// print_stack(s);
 
 	h = sh(s, 'a');
 	if (h < 3) //TODO: changed to not include 3!

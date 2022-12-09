@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 12:52:02 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 22:57:41 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,22 @@ int main(int ac, char **av)
 	error_check(process_inputdata(&app.s, av + 1, ac - 1), &app.s);
 	dupe_stack_a(&app.s, &app.d);
 	// int rs = recursive_solver(&app);
-	int rs = slow_recursive_solver(&app);
+	// int rs = slow_recursive_solver(&app);
+	int rs = 0;
 
+	// ft_printf("before stack\n");
+	// print_stack(&app.s);
+	quicksort(&app);
+	// app.s.o.rec_root = app.s.o.c;
+	// app.s.size = sh(&app.s, 'a');
+	// ft_printf("after stack\n");
+	print_stack(&app.s);
+	// slow_recursive_solver(&app);
+	// for (int i = 0; i < app.s.o.c -app.s.o.root + 1; i++)
+	// 	write_op(app.s.o.root[i]);
+		
 // # undef TEST
-#define TEST
+// #define TEST
 # ifdef TEST
 	printf("recursion:%d\n", rs);
 	op_test(&app.s, tt);

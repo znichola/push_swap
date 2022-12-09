@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 12:50:44 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 20:15:11 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	find_solution(t_stack *s)
 
 int	init_ops(t_stack *s)
 {
-	s->o.root = (int *)malloc(sizeof(int) * s->size * 4);
+	s->o.root = (int *)malloc(sizeof(int) * s->size * 20);
 	if (!s->o.root)
 		return (ERROR);
 	s->o.c = s->o.root - 1;

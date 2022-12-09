@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 14:26:45 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 22:49:51 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "libft/libft.h"
 
 # ifndef DEPTH
-#  define DEPTH 6
+#  define DEPTH 5
 # endif
 
 #undef DEBUG_TEST
@@ -60,6 +60,7 @@ typedef struct s_ops
 {
 	int	*root;
 	int	*c;
+	int	*rec_root;
 } t_ops;
 
 typedef struct s_stack
@@ -95,6 +96,17 @@ typedef	struct s_app
 	op_array		opp_mod[OPS_NUM];
 } t_app;
 
+typedef struct s_num
+{
+	int	n;
+	int	*p;
+} t_num;
+
+typedef struct s_qs
+{
+	t_num	median;
+	t_num	mmedian;
+} t_qs;
 
 // process inputdata
 int		process_inputdata_old(t_stack *stack, char *str);
@@ -103,7 +115,7 @@ int		process_inputdata(t_stack *stack, char **str, int n);
 
 // main
 int		tt(t_stack *s);
-void	 op_test(t_stack *s, int (*op)(t_stack *));
+void	op_test(t_stack *s, int (*op)(t_stack *));
 
 // recursive solver
 int		init_ops(t_stack *s);
@@ -119,6 +131,13 @@ int		slow_optimiser(t_app *a);
 // init
 void	init_app(t_app *a);
 
+// quicksort
+
+int		doaddopp(t_app *a, int opp);
+int		calc_median(t_app *a, t_qs *q, int *start, int *end);
+int		quicksort(t_app *a);
+
+
 // stack data
 int		print_stack(t_stack *s);
 
@@ -129,12 +148,14 @@ int		freeret_1(int ret, void *x);
 int		freeret_2(int ret, void *x, void *y);
 int		freeret_3(int ret, void *x, void *y, void *z);
 int		*findin_sorted(int x, int *arr, int *arr_end);
+int		*findin_unsorted(int x, int *arr, int size);
+void	bubble_sort(int *tab, int size);
 
 // debug
 
 int		dupe_stack_a(t_stack *s, t_stack *d);
 int		foo(t_stack *s, t_stack *d);
-int	ops_executor(t_app *a);
+int		ops_executor(t_app *a);
 void	error_check(int ip, t_stack *s);
 void	op_test(t_stack *s, int (*op)(t_stack *));
 void	write_op_row(int i);
