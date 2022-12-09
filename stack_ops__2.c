@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:59:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 00:20:43 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/09 14:51:41 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	rra_(t_stack *s)
 		return (FAILURE);
 	t = *s->root_a;
 	i = -1;
-	while (i++ < h)
+	while (++i < h - 1) //TODO: changed to be -1!
 		s->root_a[i] = s->root_a[i + 1];
 	*s->a = t;
 	return (SUCCESS);
@@ -44,7 +44,7 @@ int	rrb_(t_stack *s)
 		return (FAILURE);
 	t = *s->root_b;
 	i = -1;
-	while (i++ < h)
+	while (++i < h - 1) //TODO: changed to be -1! and first incrament!
 		s->root_b[i] = s->root_b[i + 1];
 	*s->b = t;
 	return (SUCCESS);
