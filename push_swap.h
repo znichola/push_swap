@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 23:40:12 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/10 11:20:26 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,16 @@ typedef struct s_num
 	int	*p;
 } t_num;
 
+// typedef struct s_qs
+// {
+// 	t_num	median;
+// 	t_num	mmedian;
+// } t_qs;
+
 typedef struct s_qs
 {
-	t_num	median;
-	t_num	mmedian;
+	int	median;
+	int	mmedian;
 } t_qs;
 
 // process inputdata
@@ -140,6 +146,7 @@ void	init_app(t_app *a);
 int		doaddopp(t_app *a, int opp);
 int		calc_median(t_app *a, t_qs *q, int *start, int *end);
 int		quicksort(t_app *a);
+int		quick_back(t_qs *q, t_app *a);
 
 // basic sort
 

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/10 00:15:54 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/10 13:20:37 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int main(int ac, char **av)
 	// ft_printf("before stack\n");
 	// print_stack(&app.s);
 	quicksort(&app);
+	// t_qs foo = {1, 1};
+	// quick_back(&foo, &app);
 	// TODO add back sorter!
 	// app.s.o.rec_root = app.s.o.c;
 	// app.s.size = sh(&app.s, 'a');
