@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:07:31 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 19:40:47 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/10 16:01:48 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ int	*findin_sorted(int x, int *arr, int *arr_end)
 
 int	*findin_unsorted(int x, int *arr, int size)
 {
+	// if (arr[0] == x)
+	// 	return (arr);
+	// if (arr[1] == x)
+	// 	return (arr + 1);
 	while (size-- > 0)
 		if (arr[size] == x)
 			return (arr + size);

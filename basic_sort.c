@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:48:11 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 23:52:28 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/10 23:26:14 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // 	if (sh(&a->s, 'a') != 2)
 // 		return (FAILURE);
 // 	if (*a->s.root_a > *a->s.a)
-// 		doaddopp(a, SA);
+// 		dop(a, SA);
 // 	return (SUCCESS);
 // }
 
@@ -27,8 +27,8 @@ int	sort3(t_app *a)
 		return (SUCCESS);
 	if (sh(&a->s, 'a') == 2)
 	{
-		if (*a->s.root_a > *a->s.a)
-			doaddopp(a, SA);
+		if (*a->s.root_a < *a->s.a)
+			dop(a, SA);
 		return (SUCCESS);
 	}
 	if (sh(&a->s, 'a') != 3)
@@ -36,14 +36,41 @@ int	sort3(t_app *a)
 	if (a->s.a[0] < a->s.a[-1] && a->s.a[-1] < a->s.a[-2])
 		return (SUCCESS);
 	if (a->s.a[0] < a->s.a[-1] && a->s.a[0] < a->s.a[-2])
-		return (doaddopp(a, RRA) + doaddopp(a, SA));
+		return (dop(a, RRA) + dop(a, SA));
 	if (a->s.a[0] > a->s.a[-1] && a->s.a[0] < a->s.a[-2])
-		return(doaddopp(a, SA));
+		return(dop(a, SA));
 	if (a->s.a[0] < a->s.a[-1] && a->s.a[0] > a->s.a[-2])
-		return(doaddopp(a, RRA));
+		return(dop(a, RRA));
 	if (a->s.a[0] > a->s.a[-1] && a->s.a[-1] < a->s.a[-2])
-		return(doaddopp(a, RA));
+		return(dop(a, RA));
 	if (a->s.a[0] > a->s.a[-1] && a->s.a[0] > a->s.a[-2])
-		return (doaddopp(a, RA) + doaddopp(a, SA));
+		return (dop(a, RA) + dop(a, SA));
+	return (FAILURE);
+}
+
+int	back_sort3(t_app *a)
+{
+	if (sh(&a->s, 'b') == 1)
+		return (dop(a, PA));
+	if (sh(&a->s, 'b') == 2)
+	{
+		if (*a->s.root_b < *a->s.b)
+			dop(a, SA);
+		return (dop(a, PA) + dop(a, PA)); 
+	}
+	if (sh(&a->s, 'b') != 3)
+		return (FAILURE);
+	if (a->s.b[0] < a->s.b[-1] && a->s.b[-1] < a->s.b[-2])
+		return (dop(a, RB) + dop(a, RB) + dop(a, PA) + dop(a, PA) + dop(a, PA));
+	if (a->s.b[0] < a->s.b[-1] && a->s.b[0] < a->s.b[-2])
+		return (dop(a, RB) + dop(a, PA) + dop(a, PA) + dop(a, PA));
+	if (a->s.b[0] > a->s.b[-1] && a->s.b[0] < a->s.b[-2])
+		return (dop(a, RRB) + dop(a, PA) + dop(a, PA) + dop(a, PA));
+	if (a->s.b[0] < a->s.b[-1] && a->s.b[0] > a->s.b[-2])
+		return (dop(a, SB) + dop(a, PA) + dop(a, PA) + dop(a, PA));
+	if (a->s.b[0] > a->s.b[-1] && a->s.b[-1] < a->s.b[-2])
+		return (dop(a, PA) + dop(a, RB) + dop(a, PA) + dop(a, PA));
+	if (a->s.b[0] > a->s.b[-1] && a->s.b[0] > a->s.b[-2])
+		return (dop(a, PA) + dop(a, PA) + dop(a, PA));
 	return (FAILURE);
 }

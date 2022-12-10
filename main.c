@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/10 13:20:37 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/10 23:34:48 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,12 @@ int main(int ac, char **av)
 	// ft_printf("before stack\n");
 	// print_stack(&app.s);
 	quicksort(&app);
+	// ft_printf("kjsdhf\n");
+	quick_back2(&app);
+	back_sort3(&app);
+	// dop(&app, PA);
 	// t_qs foo = {1, 1};
-	// quick_back(&foo, &app);
+	// quick_back(&(t_qs){50, 1}, &app);
 	// TODO add back sorter!
 	// app.s.o.rec_root = app.s.o.c;
 	// app.s.size = sh(&app.s, 'a');
@@ -52,6 +56,7 @@ int main(int ac, char **av)
 	printf("it took %d steps and there are %ld instructions\n", app.recursive_steps, app.best_sol.c - app.best_sol.root + 1);
 	// process_inputdata(&dupe, av + 1, ac - 1);
 	printf("test[%s]\n", av[1]);
+	
 	op_test(&app.d, tt);
 	foo(&app.s, &app.d);
 	ops_executor(&app); // TODO: it's buggged

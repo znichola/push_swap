@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:59:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 19:44:15 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/10 14:00:48 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	rrb_(t_stack *s)
 	int	i;
 	
 	h = sh(s, 'b');
-	if (h < 3) //TODO: changed to not include 3!
+	if (h < 2) //TODO: changed to not include 3!
 		return (FAILURE);
 	t = *s->root_b;
 	i = -1;

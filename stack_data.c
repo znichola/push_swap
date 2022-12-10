@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 23:23:03 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/08 14:16:32 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/10 16:16:06 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int	print_stack(t_stack *s)
 	while (i++ < s->size)
 	{
 		if (s->root_a + i <= s->a)
-			printf("%-2d", s->root_a[i]);
+			ft_printf("%-2d", s->root_a[i]);
 		else
-			printf("  ");
-		printf(" ");
+			ft_printf("  ");
+		ft_printf(" ");
 		if (s->root_b + i <= s->b)
-			printf("%-2d", s->root_b[i]);
-		printf("\n");
+			ft_printf("%-2d", s->root_b[i]);
+		ft_printf("\n");
 	}
 	return (SUCCESS);
 }
