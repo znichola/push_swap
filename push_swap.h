@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/11 17:16:44 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/11 19:33:27 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@
 # include <unistd.h>
 
 # include "libft/libft.h"
-
-# ifndef DEPTH
-#  define DEPTH 5
-# endif
-
-#undef DEBUG_TEST
-# define DEBUG_TEST 1
 
 # define SUCCESS 0
 # define FAILURE 1
@@ -53,14 +46,14 @@ typedef struct s_run
 	int	a_hight;
 	int	b_hight;
 	int	finish_me;
-} t_run;
+}	t_run;
 
 typedef struct s_ops
 {
 	int	*root;
 	int	*c;
 	int	*rec_root;
-} t_ops;
+}	t_ops;
 
 typedef struct s_stack
 {
@@ -70,35 +63,44 @@ typedef struct s_stack
 	int		*a;
 	int		*b;
 	t_run	r;
-	t_ops	o; // chicken and egg problem also this is apointer so the real value needs to be initialised somewhere
-} t_stack;
+	t_ops	o;
+}	t_stack;
+// chicken and egg problem also this is apointer so the
+// real value needs to be initialised somewhere
 
 /* function pointer */
-typedef int (*op_array)(t_stack *);
+typedef int	(*t_op_array)(t_stack *);
 
-typedef	struct s_app
+typedef struct s_app
 {
 	t_stack			s;
 	t_stack			d;
 	int				max_depth;
 	unsigned int	recursive_steps;
 	t_ops			best_sol;
-	op_array		opp[OPS_NUM];
-	op_array		opp_[OPS_NUM];
-	op_array		undo[OPS_NUM];
-	op_array		opp_mod[OPS_NUM];
-} t_app;
+	t_op_array		opp[OPS_NUM];
+	t_op_array		opp_[OPS_NUM];
+	t_op_array		undo[OPS_NUM];
+	t_op_array		opp_mod[OPS_NUM];
+}	t_app;
 
 typedef struct s_qs
 {
 	int	m;
 	int	mm;
-} t_qs;
+}	t_qs;
 
 /* process inputdata */
 
-int		process_inputdata_old(t_stack *stack, char *str);
+int		ft_atoi_read(int *n, char **str);
+int		init_ops(t_stack *s);
+int		finish_setup(t_stack *s);
 int		process_inputdata(t_stack *stack, char **str, int n);
+
+/* process inputdate 2 */
+
+int		find_solution(t_stack *s);
+int		process_inputdata_old(t_stack *stack, char *str);
 
 /* init */
 
@@ -142,31 +144,9 @@ void	write_op(int i);
 void	write_ops_row(t_app *a);
 void	write_ops_column(t_app *a);
 
-/* stack ops 0 */
-
-int		sh(t_stack *s, char x);
-int		tg(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *));
-int		sa(t_stack *s);
-int		sb(t_stack *s);
-int		ss(t_stack *s);
-
-/* stack ops 1 */
-
-int		pa(t_stack *s);
-int		pb(t_stack *s);
-int		ra(t_stack *s);
-int		rb(t_stack *s);
-int		rr(t_stack *s);
-
-/* stack ops 2 */
-
-int		rra(t_stack *s);
-int		rrb(t_stack *s);
-int		rrr(t_stack *s);
-int		tt(t_stack *s);
-
 /* stack ops _0 */
 
+int		sh(t_stack *s, char x);
 int		tg_(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *));
 int		sa_(t_stack *s);
 int		sb_(t_stack *s);
@@ -185,25 +165,6 @@ int		rr_(t_stack *s);
 int		rra_(t_stack *s);
 int		rrb_(t_stack *s);
 int		rrr_(t_stack *s);
+int		tt(t_stack *s);
 
 #endif /* push swap*/
-
-// sa (swap a): Swap the first 2 elements at the top of stack a.
-// Do nothing if there is only one or no elements.
-// sb (swap b): Swap the first 2 elements at the top of stack b.
-// Do nothing if there is only one or no elements.
-// ss : sa and sb at the same time.
-// pa (push a): Take the first element at the top of b and put it at the top of a.
-// Do nothing if b is empty.
-// pb (push b): Take the first element at the top of a and put it at the top of b.
-// Do nothing if a is empty.
-// ra (rotate a): Shift up all elements of stack a by 1.
-// The first element becomes the last one.
-// rb (rotate b): Shift up all elements of stack b by 1.
-// The first element becomes the last one.
-// rr : ra and rb at the same time.
-// rra (reverse rotate a): Shift down all elements of stack a by 1.
-// The last element becomes the first one.
-// rrb (reverse rotate b): Shift down all elements of stack b by 1.
-// The last element becomes the first one.
-// rrr : rra and rrb at the same time.

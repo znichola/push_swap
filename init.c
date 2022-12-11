@@ -6,29 +6,15 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:14:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/11 17:38:19 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/11 19:33:47 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int	fill_opperations(op_array arr[OPS_NUM])
-void	fill_opps(op_array *o)
-{
-	o[0] = sa;
-	o[1] = sb;
-	o[2] = ss;
-	o[3] = pa;
-	o[4] = pb;
-	o[5] = ra;
-	o[6] = rb;
-	o[7] = rr;
-	o[8] = rra;
-	o[9] = rrb;
-	o[10] = rrr;
-}
+// int	fill_opperations(t_op_array arr[OPS_NUM])
 
-void	fill_opps_(op_array *o)
+void	fill_opps_(t_op_array *o)
 {
 	o[0] = sa_;
 	o[1] = sb_;
@@ -43,7 +29,7 @@ void	fill_opps_(op_array *o)
 	o[10] = rrr_;
 }
 
-void	fill_undo(op_array *o)
+void	fill_undo(t_op_array *o)
 {
 	o[0] = sa_;
 	o[1] = sb_;
@@ -58,7 +44,7 @@ void	fill_undo(op_array *o)
 	o[10] = rr_;
 }
 
-void	fill_mod(op_array *o)
+void	fill_mod(t_op_array *o)
 {
 	o[0] = sa_;
 	o[1] = tt;
@@ -75,15 +61,7 @@ void	fill_mod(op_array *o)
 
 void	init_app(t_app *a)
 {
-	fill_opps(a->opp);
 	fill_opps_(a->opp_);
 	fill_undo(a->undo);
 	fill_mod(a->opp_mod);
-	a->max_depth = DEPTH;
-	a->recursive_steps = 0;
-	a->best_sol.root = (int *)malloc(sizeof(int) * OPS_NUM); //TODO remove this!
-	a->best_sol.root = NULL;
-	// if (!a->best_sol.root)
-		// return(NULL); //TODO: reactivate this malloc
-	a->best_sol.c = a->best_sol.root;
 }

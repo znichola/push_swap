@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/11 17:45:24 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/11 19:26:21 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ int	main(int ac, char **av)
 	input_check(process_inputdata(&app.s, av + 1, ac - 1), &app.s);
 	quicksort(&app);
 	quick_back2(&app);
+	write_ops_column(&app);
+	exit(0);
+	return (0);
+}
 	// TODO trim the list of ops using some rules
 	// consecutive ra followed by consecutive rb should be combined to rr
 	// ra ra > rr
@@ -33,6 +37,3 @@ int	main(int ac, char **av)
 	// sa sb > ss
 	// rb rb rb pa rrb rrb rbb pa rb rb rb
 	// rb pa rrb pa rb
-	write_ops_column(&app);
-	return (0);
-}
