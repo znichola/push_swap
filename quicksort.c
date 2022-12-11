@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:46:44 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/10 23:33:30 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/11 00:52:12 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ int	quick_back2(t_app *a)
 		// ft_printf(" a.root_b:%d", *a->s.root_b);
 		// ft_printf(" hight_b:%d\n", hight_b);
 		if (next == a->s.r.solution)
-			return (SUCCESS);
+			return (back_sort3(a));
 		next += 1;
 		next_b = findin_unsorted(*next, a->s.root_b, hight_b);
 		if (!next_b)
@@ -172,5 +172,8 @@ int	quick_back2(t_app *a)
 		// print_stack(&a->s);
 		// break;
 	}
-	return (SUCCESS);
+	print_stack(&a->s);
+	for (int i = 0; i < a->s.o.c - a->s.o.root + 1; i++)
+		write_op_row(a->s.o.root[i]);
+	return (back_sort3(a));
 }

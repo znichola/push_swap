@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/10 23:34:48 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/11 00:53:28 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,22 @@ int main(int ac, char **av)
 	// ft_printf("before stack\n");
 	// print_stack(&app.s);
 	quicksort(&app);
-	// ft_printf("kjsdhf\n");
 	quick_back2(&app);
-	back_sort3(&app);
+	
+	// TODO URGENT! this case is broken : make && ./push_swap 13 14 12 15 8 2 6 3 9 7 10 11 4 1 5
 	// dop(&app, PA);
+
+	
 	// t_qs foo = {1, 1};
 	// quick_back(&(t_qs){50, 1}, &app);
-	// TODO add back sorter!
 	// app.s.o.rec_root = app.s.o.c;
 	// app.s.size = sh(&app.s, 'a');
-	// ft_printf("after stack\n");
-	// print_stack(&app.s);
+	ft_printf("\nafter stack\n");
 	// slow_recursive_solver(&app);
 	for (int i = 0; i < app.s.o.c -app.s.o.root + 1; i++)
-		write_op(app.s.o.root[i]);
+		write_op_row(app.s.o.root[i]);
 		
+	print_stack(&app.s);
 // # undef TEST
 // #define TEST
 # ifdef TEST

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:48:11 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/10 23:26:14 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/11 01:08:12 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	back_sort3(t_app *a)
 	if (sh(&a->s, 'b') != 3)
 		return (FAILURE);
 	if (a->s.b[0] < a->s.b[-1] && a->s.b[-1] < a->s.b[-2])
-		return (dop(a, RB) + dop(a, RB) + dop(a, PA) + dop(a, PA) + dop(a, PA));
+		return (dop(a, RB) + dop(a, SB) + dop(a, PA) + dop(a, PA) + dop(a, PA));
 	if (a->s.b[0] < a->s.b[-1] && a->s.b[0] < a->s.b[-2])
 		return (dop(a, RB) + dop(a, PA) + dop(a, PA) + dop(a, PA));
 	if (a->s.b[0] > a->s.b[-1] && a->s.b[0] < a->s.b[-2])
