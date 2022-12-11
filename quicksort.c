@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:46:44 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/11 14:33:42 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/11 17:27:31 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ int	quick_back2(t_app *a)
 	hight_b = sh(&a->s, 'b');
 	while (hight_b > 4)
 	{
+	// ft_printf("ksjdhf\n");
 		hight_b = sh(&a->s, 'b');
 		next = findin_sorted(*a->s.a, a->s.r.solution, a->s.r.s_end);
 		if (!next)

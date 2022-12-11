@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:48:11 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/11 01:08:12 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/11 16:43:12 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int	sort3(t_app *a)
 	if (a->s.a[0] < a->s.a[-1] && a->s.a[0] < a->s.a[-2])
 		return (dop(a, RRA) + dop(a, SA));
 	if (a->s.a[0] > a->s.a[-1] && a->s.a[0] < a->s.a[-2])
-		return(dop(a, SA));
+		return (dop(a, SA));
 	if (a->s.a[0] < a->s.a[-1] && a->s.a[0] > a->s.a[-2])
-		return(dop(a, RRA));
+		return (dop(a, RRA));
 	if (a->s.a[0] > a->s.a[-1] && a->s.a[-1] < a->s.a[-2])
-		return(dop(a, RA));
+		return (dop(a, RA));
 	if (a->s.a[0] > a->s.a[-1] && a->s.a[0] > a->s.a[-2])
 		return (dop(a, RA) + dop(a, SA));
 	return (FAILURE);
@@ -56,7 +56,7 @@ int	back_sort3(t_app *a)
 	{
 		if (*a->s.root_b < *a->s.b)
 			dop(a, SA);
-		return (dop(a, PA) + dop(a, PA)); 
+		return (dop(a, PA) + dop(a, PA));
 	}
 	if (sh(&a->s, 'b') != 3)
 		return (FAILURE);

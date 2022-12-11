@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/09 20:15:11 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/11 17:46:51 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,13 @@ static int	add_num(t_stack *s, int i, char **str)
 {
 	int	t;
 	int	e;
-	
+
 	if (ft_atoi_read(&t, str))
-	{
-		// write(1, &"input nu@ error\n", 17);
 		return (FAILURE);
-	}
 	e = i;
 	while (++e < s->size) //TODO: swapped to ++e instead of e++
 		if (s->root_a[e] == t)
-		{
-			// write(1, &"duplicate num\n", 14);
 			return (FAILURE);
-		}
 	s->root_a[i] = t;
 	return (SUCCESS);
 }
@@ -135,7 +129,7 @@ int	process_inputdata_old(t_stack *stack, char *str)
 {
 	int	i;
 	// int	t;
-	
+
 	i = countnums(str);
 	stack->root_a = (int *)malloc(sizeof(int) * i);
 	if (!stack->root_a)
