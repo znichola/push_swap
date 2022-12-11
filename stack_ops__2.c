@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:59:39 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/11 19:33:04 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/11 19:39:26 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ int	rrr_(t_stack *s)
 
 int	tt(t_stack *s)
 {
+	s->size = s->size;
 	return (FAILURE);
 }

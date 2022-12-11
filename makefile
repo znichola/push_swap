@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 07:44:20 by znichola          #+#    #+#              #
-#    Updated: 2022/12/11 19:31:41 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/11 19:38:35 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ OBJ		=	$(SRC:.c=.o)
 # INCLUDE	=	push_swap.h
 
 CC 		=	gcc
-# CFLAGS	=	-Wall -Werror -Wextra
-CFLAGS	=	-g3 -fsanitize=address
+CFLAGS	=	-Wall -Werror -Wextra
+# CFLAGS	=	-g3 -fsanitize=address
 # CFLAGS		= -g3
 RM		=	rm -f
 

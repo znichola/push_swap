@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:46:44 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/11 18:59:09 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/11 19:42:44 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	dop(t_app *a, int opp)
 	return (a->opp_[opp](&a->s));
 }
 
-int	calc_median(t_app *a, t_qs *q, int *start, int *end)
+int	calc_median(t_qs *q, int *start, int *end)
 {
 	int	*list;
 	int	i;
@@ -49,7 +49,7 @@ int	quicksort(t_app *a)
 	i = sh(&a->s, 'a');
 	if (i < 4)
 		return (sort3(a));
-	if (calc_median(a, &q, a->s.root_a, a->s.a) == ERROR)
+	if (calc_median(&q, a->s.root_a, a->s.a) == ERROR)
 		return (ERROR);
 	while (i--)
 	{
