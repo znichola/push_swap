@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/11 01:08:55 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/11 01:35:05 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,15 @@ int main(int ac, char **av)
 	quicksort(&app);
 	quick_back2(&app);
 	
-	// TODO URGENT! this case is broken : make && ./push_swap 13 14 12 15 8 2 6 3 9 7 10 11 4 1 5
 	// dop(&app, PA);
 
+	// TODO trim the list of ops using some rules
+	// consecutive ra followed by consecutive rb should be combined to rr
+	// ra ra > rr
+	// rra rrb > rrr
+	// sa sb > ss
+	// rb rb rb pa rrb rrb rbb pa rb rb rb
+	// rb pa rrb pa rb
 	
 	// t_qs foo = {1, 1};
 	// quick_back(&(t_qs){50, 1}, &app);
