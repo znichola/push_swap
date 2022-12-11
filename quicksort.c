@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:46:44 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/11 00:52:12 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/11 01:09:01 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,8 +172,8 @@ int	quick_back2(t_app *a)
 		// print_stack(&a->s);
 		// break;
 	}
-	print_stack(&a->s);
-	for (int i = 0; i < a->s.o.c - a->s.o.root + 1; i++)
-		write_op_row(a->s.o.root[i]);
+	// print_stack(&a->s);
+	// for (int i = 0; i < a->s.o.c - a->s.o.root + 1; i++)
+	// 	write_op_row(a->s.o.root[i]);
 	return (back_sort3(a));
 }
