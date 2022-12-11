@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:46:44 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/11 14:23:31 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/11 14:33:42 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,33 +69,41 @@ int	quicksort(t_app *a)
 	// ft_printf("median:%d \nmmedian:%d \nsh_a:%d\n",
 	// 	q.m, q.mm, sh(&a->s, 'a'));
 
-int	quick_back(t_qs *q, t_app *a)
-{
-	int	*next;
-	int	*next_b;
-	int	hight_b;
+// int	quick_back(t_qs *q, t_app *a)
+// {
+// 	int	*next;
+// 	int	*next_b;
+// 	int	hight_b;
 
-	while (sh(&a->s, 'b') > 10)
-	{
-		next = findin_sorted(*a->s.a, a->s.r.solution, a->s.r.s_end);
-		if (!next)
-			return (message_ret(ERROR, "can't find a next in solution!"));
-		next += 1;
-		if (!(*next >= q->mm))
-			break ;
-		if (*next == *a->s.b)
-			dop(a, PA);
-		else if (*next >= q->m)
-			dop(a, RRB);
-		else
-			dop(a, RB);
-	}
-	return (SUCCESS);
-}
+// 	while (sh(&a->s, 'b') > 10)
+// 	{
+// 		next = findin_sorted(*a->s.a, a->s.r.solution, a->s.r.s_end);
+// 		if (!next)
+// 			return (message_ret(ERROR, "can't find a next in solution!"));
+// 		next += 1;
+// 		if (!(*next >= q->mm))
+// 			break ;
+// 		if (*next == *a->s.b)
+// 			dop(a, PA);
+// 		else if (*next >= q->m)
+// 			dop(a, RRB);
+// 		else
+// 			dop(a, RB);
+// 	}
+// 	return (SUCCESS);
+// }
 		// ft_printf("q  m:%d mm:%d\n", q->m, q->mm);
 		// printf("next is:%d\n", *next);
 		// print_stack(&a->s);
 		// next_b = findin_unsorted(next[1], a->s.b, hight_b);
+
+static int	quick_back_helper(t_app *a, int *next, int op)
+{
+	while (*a->s.b != *next)
+		dop(a, op);
+	dop(a, PA);
+	return (SUCCESS);
+}
 
 int	quick_back2(t_app *a)
 {
@@ -119,17 +127,9 @@ int	quick_back2(t_app *a)
 			return (message_ret(ERROR, "can't find a next in stack b!"));
 		i = next_b - a->s.root_b + 1;
 		if (i > hight_b / 2)
-		{
-			while (*a->s.b != *next)
-				dop(a, RB);
-			dop(a, PA);
-		}
+			quick_back_helper(a, next, RB);
 		else
-		{
-			while (*a->s.b != *next)
-				dop(a, RRB);
-			dop(a, PA);
-		}
+			quick_back_helper(a, next, RRB);
 	}
 	return (back_sort3(a));
 }
