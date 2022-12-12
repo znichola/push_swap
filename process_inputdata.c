@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/12 14:21:43 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:39:53 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,6 @@ int	finish_setup(t_stack *s)
 		return (ERROR);
 	if (init_ops(s))
 		return (freeret_1(ERROR, s->r.solution));
-	s->r.a = NULL;
-	s->r.b = NULL;
-	s->r.a_hight = 0;
-	s->r.a_hight = 0;
-	s->r.finish_me = -1;
 	// ft_printf("\nstack size:%d\n", s->size);
 	if (s->size <= 150)
 		s->pivot = (t_qs){2, 4};

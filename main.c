@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/12 13:46:41 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:33:05 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int ac, char **av)
 	if (quick_back2(&app) != SUCCESS)
 		ft_printf("\nerror in quickback2!");
 	// print_stack(&app.s);
+	
 	write_ops_column(&app);
 	exit(0);
 	return (0);

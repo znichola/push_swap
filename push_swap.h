@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/12 13:41:45 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:41:46 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,7 @@
 typedef struct s_run
 {
 	int	*solution;
-	int	*a;
-	int	*b;
 	int	*s_end;
-	int	a_hight;
-	int	b_hight;
-	int	finish_me;
 }	t_run;
 
 typedef struct s_ops
@@ -81,9 +76,6 @@ typedef int	(*t_op_array)(t_stack *);
 typedef struct s_app
 {
 	t_stack			s;
-	t_stack			d;
-	int				max_depth;
-	unsigned int	recursive_steps;
 	t_op_array		opp_[OPS_NUM];
 	t_op_array		undo[OPS_NUM];
 	t_op_array		opp_mod[OPS_NUM];
