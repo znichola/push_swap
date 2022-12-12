@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/12 14:41:46 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:36:55 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,16 @@ typedef struct s_run
 	int	*s_end;
 }	t_run;
 
+typedef struct s_trim
+{
+	int	rb_s;
+	int	rrb_s;
+}	t_trim;
+
 typedef struct s_ops
 {
 	int	*root;
 	int	*c;
-	int	*rec_root;
 }	t_ops;
 
 typedef struct s_qs
@@ -66,6 +71,7 @@ typedef struct s_stack
 	t_qs	pivot;
 	t_run	r;
 	t_ops	o;
+	t_ops	new;
 }	t_stack;
 // chicken and egg problem also this is apointer so the
 // real value needs to be initialised somewhere
@@ -114,6 +120,10 @@ int		back_sort3(t_app *a);
 /* stack data */
 
 int		print_stack(t_stack *s);
+
+/* merg */
+
+int		opmerg(t_ops *o, t_ops *new);
 
 /* util */
 

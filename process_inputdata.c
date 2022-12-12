@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/12 14:39:53 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/12 22:54:17 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ int	init_ops(t_stack *s)
 	if (!s->o.root)
 		return (ERROR);
 	s->o.c = s->o.root - 1;
+	s->new.root = (int *)malloc(sizeof(int) * s->size * 30);
+	if (!s->new.root)
+		return (freeret_1(ERROR, s->o.root));
+	s->new.c = s->new.root - 1;
 	return (SUCCESS);
 }
 	// ft_printf("malloced room for %d opps\n", s->size * 30);
