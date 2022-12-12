@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/12 10:48:10 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:21:43 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int	ft_atoi_read(int *n, char **str)
 int	init_ops(t_stack *s)
 {
 	s->o.root = (int *)malloc(sizeof(int) * s->size * 30);
-	// ft_printf("malloced room for %d opps\n", s->size * 30);
 	if (!s->o.root)
 		return (ERROR);
 	s->o.c = s->o.root - 1;
 	return (SUCCESS);
 }
+	// ft_printf("malloced room for %d opps\n", s->size * 30);
 
 int	finish_setup(t_stack *s)
 {
@@ -56,6 +56,13 @@ int	finish_setup(t_stack *s)
 	s->r.a_hight = 0;
 	s->r.a_hight = 0;
 	s->r.finish_me = -1;
+	// ft_printf("\nstack size:%d\n", s->size);
+	if (s->size <= 150)
+		s->pivot = (t_qs){2, 4};
+	else if (s->size <= 300)
+		s->pivot = (t_qs){3, 6};
+	else
+		s->pivot = (t_qs){4, 10};
 	return (SUCCESS);
 }
 

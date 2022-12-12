@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/12 13:11:44 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:41:45 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ typedef struct s_ops
 	int	*rec_root;
 }	t_ops;
 
+typedef struct s_qs
+{
+	int	m;
+	int	mm;
+}	t_qs;
+
 typedef struct s_stack
 {
 	int		size;
@@ -62,6 +68,7 @@ typedef struct s_stack
 	int		*root_b;
 	int		*a;
 	int		*b;
+	t_qs	pivot;
 	t_run	r;
 	t_ops	o;
 }	t_stack;
@@ -77,18 +84,11 @@ typedef struct s_app
 	t_stack			d;
 	int				max_depth;
 	unsigned int	recursive_steps;
-	t_ops			best_sol;
-	t_op_array		opp[OPS_NUM];
 	t_op_array		opp_[OPS_NUM];
 	t_op_array		undo[OPS_NUM];
 	t_op_array		opp_mod[OPS_NUM];
 }	t_app;
 
-typedef struct s_qs
-{
-	int	m;
-	int	mm;
-}	t_qs;
 
 /* process inputdata */
 
@@ -109,7 +109,7 @@ void	init_app(t_app *a);
 /* quicksort */
 
 int		dop(t_app *a, int opp);
-int		calc_pivot(t_qs *q, int *start, int *end);
+int		calc_pivot(t_app *a, t_qs *q, int *start, int *end);
 int		quicksort(t_app *a);
 // int		quick_back(t_qs *q, t_app *a);
 int		quick_back2(t_app *a);

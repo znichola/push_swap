@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:46:44 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/12 13:11:45 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:09:13 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	dop(t_app *a, int opp)
 	return (a->opp_[opp](&a->s));
 }
 
-int	calc_pivot(t_qs *q, int *start, int *end)
+int	calc_pivot(t_app *a, t_qs *q, int *start, int *end)
 {
 	int	*list;
 	int	i;
@@ -34,10 +34,13 @@ int	calc_pivot(t_qs *q, int *start, int *end)
 	while (start + i++ != end)
 		list[i] = start[i];
 	bubble_sort(list, i);
+	// ft_printf("pivot m:%d mm:%d\n", a->s.pivot.m, a->s.pivot.mm);
 	if (end - start > 20)
 		*q = (t_qs){(*(list + i / 6)), (*(list + i / 12))};
 	else if (end - start <= 20 && start != end)
 		*q = (t_qs){(*(list + i - 3)), (*(list + (i - 3) / 2))};
+	// ft_printf("afterpivot m:%d mm:%d\n", q->m, q->mm);
+
 	return (freeret_1(SUCCESS, list));
 }
 
@@ -52,7 +55,7 @@ int	quicksort(t_app *a)
 		// print_stack(&a->s);
 		return (message_ret(ERROR, "\nhere out!\n") + sort3(a));
 	}
-	if (calc_pivot(&q, a->s.root_a, a->s.a) == ERROR)
+	if (calc_pivot(a, &q, a->s.root_a, a->s.a) == ERROR)
 		return (ERROR);
 	while (i--)
 	{
