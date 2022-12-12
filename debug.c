@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:09:04 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/11 17:18:37 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:00:50 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	write_ops_row(t_app *a)
 
 	h = a->s.o.c - a->s.o.root + 1;
 	i = 0;
-	while (a->s.o.root[i] && i < h)
+	while (i < h)
 	{
 		write_op(a->s.o.root[i]);
 		ft_printf(" ");
@@ -77,7 +77,7 @@ void	write_ops_column(t_app *a)
 
 	h = a->s.o.c - a->s.o.root + 1;
 	i = 0;
-	while (a->s.o.root[i] && i < h)
+	while (i < h)
 	{
 		write_op(a->s.o.root[i]);
 		ft_printf("\n");
@@ -85,6 +85,8 @@ void	write_ops_column(t_app *a)
 	}
 }
 
+// printf the stack going top down, the root is at the top of the terminal
+//  top of stack is near the end.
 int	print_stack(t_stack *s)
 {
 	int	i;

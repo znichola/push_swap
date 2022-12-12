@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/11 19:40:15 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:11:44 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	init_app(t_app *a);
 /* quicksort */
 
 int		dop(t_app *a, int opp);
-int		calc_median(t_qs *q, int *start, int *end);
+int		calc_pivot(t_qs *q, int *start, int *end);
 int		quicksort(t_app *a);
 // int		quick_back(t_qs *q, t_app *a);
 int		quick_back2(t_app *a);

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:46:44 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/11 19:42:44 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:11:45 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	dop(t_app *a, int opp)
 	return (a->opp_[opp](&a->s));
 }
 
-int	calc_median(t_qs *q, int *start, int *end)
+int	calc_pivot(t_qs *q, int *start, int *end)
 {
 	int	*list;
 	int	i;
@@ -35,9 +35,9 @@ int	calc_median(t_qs *q, int *start, int *end)
 		list[i] = start[i];
 	bubble_sort(list, i);
 	if (end - start > 20)
-		*q = (t_qs){(*(list + i / 5)), (*(list + i / 10))};
+		*q = (t_qs){(*(list + i / 6)), (*(list + i / 12))};
 	else if (end - start <= 20 && start != end)
-		*q = (t_qs){(*(list + i - 2)), (*(list + (i - 2) / 2))};
+		*q = (t_qs){(*(list + i - 3)), (*(list + (i - 3) / 2))};
 	return (freeret_1(SUCCESS, list));
 }
 
@@ -48,8 +48,11 @@ int	quicksort(t_app *a)
 
 	i = sh(&a->s, 'a');
 	if (i < 4)
-		return (sort3(a));
-	if (calc_median(&q, a->s.root_a, a->s.a) == ERROR)
+	{
+		// print_stack(&a->s);
+		return (message_ret(ERROR, "\nhere out!\n") + sort3(a));
+	}
+	if (calc_pivot(&q, a->s.root_a, a->s.a) == ERROR)
 		return (ERROR);
 	while (i--)
 	{
@@ -99,8 +102,16 @@ int	quicksort(t_app *a)
 
 static int	quick_back_helper(t_app *a, int *next, int op)
 {
+	
 	while (*a->s.b != *next)
+	{
+		// ft_printf("going:"); write_op(op);
+		// ft_printf("	before:%p op:%d", a->s.o.c, *a->s.o.c);
+		// ft_printf("	status:%d", dop(a, op));
+		// ft_printf("	after:%p op:%d\n", a->s.o.c, *a->s.o.c);
 		dop(a, op);
+	}
+	// ft_printf("going:"); write_op(PA); ft_printf("	status:%d\n", dop(a, PA));
 	dop(a, PA);
 	return (SUCCESS);
 }
@@ -120,7 +131,7 @@ int	quick_back2(t_app *a)
 		if (!next)
 			return (message_ret(ERROR, "can't find a next in solution!"));
 		if (next == a->s.r.solution)
-			return (back_sort3(a));
+			return (message_ret(ERROR, "next is solution!") + back_sort3(a));
 		next += 1;
 		next_b = findin_unsorted(*next, a->s.root_b, hight_b);
 		if (!next_b)
@@ -130,8 +141,9 @@ int	quick_back2(t_app *a)
 			quick_back_helper(a, next, RB);
 		else
 			quick_back_helper(a, next, RRB);
+		// write_ops_row(a); ft_printf("\n");
 	}
-	return (back_sort3(a));
+	return (message_ret(SUCCESS, "finish quickback2!") + back_sort3(a));
 }
 		// ft_printf("next is:%d next_b:%d next_b-hight:%d\n",
 		// *next, *next_b, next_b - a->s.root_b + 1);

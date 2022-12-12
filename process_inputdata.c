@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/11 19:12:45 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/12 10:48:10 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	ft_atoi_read(int *n, char **str)
 
 int	init_ops(t_stack *s)
 {
-	s->o.root = (int *)malloc(sizeof(int) * s->size * 20);
+	s->o.root = (int *)malloc(sizeof(int) * s->size * 30);
+	// ft_printf("malloced room for %d opps\n", s->size * 30);
 	if (!s->o.root)
 		return (ERROR);
 	s->o.c = s->o.root - 1;
