@@ -6,14 +6,17 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 21:29:13 by znichola          #+#    #+#              #
-#    Updated: 2022/12/15 05:36:59 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/15 17:15:40 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	checker
 
-FILES	=	execute_ops  input_ops    stack_ops__0 stack_ops__2 utils2  utils3 \
-			input_num    main         stack_ops__1 utils
+# FILES	=	execute_ops  input_ops    stack_ops__0 stack_ops__2 utils2  utils3 \
+# 			input_num    main         stack_ops__1 utils ../process_inputdata \
+
+FILES	=	main utility ../util3 stack_ops__0 stack_ops__1 stack_ops__2 
+
 SRC		=	$(addsuffix .c, $(FILES))
 OBJ		= 	$(SRC:.c=.o)
 

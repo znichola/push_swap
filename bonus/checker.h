@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 21:32:41 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/15 05:37:58 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/15 17:15:32 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,34 +53,17 @@ typedef struct s_stack
 	int		*ops_root;
 }	t_stack;
 
-// input nums
-int		process_input_nums(t_stack *stack, char *str);
+int		process_inputdata(t_stack *stack, char **str, int n);
 
-// input ops
-int		process_input_ops(t_stack *s, char *str);
+int		safe_add(int *a, int b);
+int		safe_multi(int *a, int b);
 
-// execute ops
-int		print_stack(t_stack *s);
-int		execute_ops(t_stack *s);
+int		freeret_1(int ret, void *x);
+int		freeret_2(int ret, void *x, void *y);
+int		freeret_3(int ret, void *x, void *y, void *z);
 
-// utils
-int		ft_isspace(int c);
-int		ft_count_args(char const *s);
-int		ft_atoi_read(int *n, char **str);
-int		ft_message_ret(int sig, char *msg);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
 
-// utils 2
-int		message_ret(int sig, int fd, char *msg);
-int		ft_freeret_1(int ret, void *x);
-int		ft_freeret_2(int ret, void *x, void *y);
-int		ft_freeret_3(int ret, void *x, void *y, void *z);
-int		write_ops(int i);
-
-// utils 3
-int		display_ops(t_stack *s);
-
-// stack ops _0
+// // stack ops _0
 int		sh(t_stack *s, char x);
 int		tg_(t_stack *s, int (*x)(t_stack *), int (*y)(t_stack *));
 int		sa_(t_stack *s);
@@ -98,5 +81,38 @@ int		rr_(t_stack *s);
 int		rra_(t_stack *s);
 int		rrb_(t_stack *s);
 int		rrr_(t_stack *s);
+
+// int		find_opp(char *str, size_t len);
+
+// // from pushswap
+// int		process_inputdata(t_stack *stack, char **str, int n);
+
+// // input nums
+// int		process_input_nums(t_stack *stack, char *str);
+
+// // input ops
+// int		process_input_ops(t_stack *s, char *str);
+
+// // execute ops
+// int		print_stack(t_stack *s);
+// int		execute_ops(t_stack *s);
+
+// // utils
+// int		ft_isspace(int c);
+// int		ft_count_args(char const *s);
+// int		ft_atoi_read(int *n, char **str);
+// int		ft_message_ret(int sig, char *msg);
+// void	*ft_memcpy(void *dest, const void *src, size_t n);
+
+// // utils 2
+// int		message_ret(int sig, int fd, char *msg);
+// int		ft_freeret_1(int ret, void *x);
+// int		ft_freeret_2(int ret, void *x, void *y);
+// int		ft_freeret_3(int ret, void *x, void *y, void *z);
+// int		write_ops(int i);
+
+// // utils 3
+// int		display_ops(t_stack *s);
+
 
 #endif /* checker */
