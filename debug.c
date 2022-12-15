@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:09:04 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/15 00:38:23 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/15 04:14:55 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,7 @@
 // TODO: rename this
 void	input_check(int ip, t_stack *s)
 {
-	// if (ip == FAILURE || ip == 2)
-	// {
-	// 	free(s->root_a);
-	// 	free(s->root_b);
-	// }
-	if (ip != 0  || ip == 2)
+	if (ip != 0 || ip == 2)
 	{
 		exit_error(42);
 	}
@@ -61,10 +56,8 @@ void	write_ops_row(t_app *a)
 
 	h = a->s.o.c - a->s.o.root + 1;
 	i = 0;
-	// ft_printf("h:%d\n", h);
 	while (i < h)
 	{
-		// ft_printf("%d:", i);
 		write_op(a->s.o.root[i]);
 		ft_printf(" ");
 		i++;

@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:46:44 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/14 17:02:48 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/15 04:05:28 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ int	calc_pivot(t_app *a, t_qs *q, int *start, int *end)
 	while (start + i++ != end)
 		list[i] = start[i];
 	bubble_sort(list, i);
-	// ft_printf("pivot m:%d mm:%d\n", a->s.pivot.m, a->s.pivot.mm);
 	if (end - start > 20)
-		*q = (t_qs){(*(list + i / a->s.pivot.m)), (*(list + i / a->s.pivot.mm))};
+		*q = (t_qs){(*(list + i / a->s.pivot.m)),
+			(*(list + i / a->s.pivot.mm))};
 	else if (end - start <= 20 && start != end)
 		*q = (t_qs){(*(list + i - 3)), (*(list + (i - 3) / 2))};
-	// ft_printf("afterpivot m:%d mm:%d\n", q->m, q->mm);
-
 	return (freeret_1(SUCCESS, list));
 }
+	// ft_printf("pivot m:%d mm:%d\n", a->s.pivot.m, a->s.pivot.mm);
+	// ft_printf("afterpivot m:%d mm:%d\n", q->m, q->mm);
 
 int	quicksort(t_app *a)
 {
@@ -52,7 +52,6 @@ int	quicksort(t_app *a)
 	i = sh(&a->s, 'a');
 	if (i < 4)
 	{
-		// print_stack(&a->s);
 		return (message_ret(ERROR, "\nhere out!\n") + sort3(a));
 	}
 	if (calc_pivot(a, &q, a->s.root_a, a->s.a) == ERROR)
@@ -105,19 +104,19 @@ int	quicksort(t_app *a)
 
 int	quick_back_helper(t_app *a, int *next, int op)
 {
-	
 	while (*a->s.b != *next)
 	{
+		dop(a, op);
+	}
+	dop(a, PA);
+	return (SUCCESS);
+}
 		// ft_printf("going:"); write_op(op);
 		// ft_printf("	before:%p op:%d", a->s.o.c, *a->s.o.c);
 		// ft_printf("	status:%d", dop(a, op));
 		// ft_printf("	after:%p op:%d\n", a->s.o.c, *a->s.o.c);
-		dop(a, op);
-	}
-	// ft_printf("going:"); write_op(PA); ft_printf("	status:%d\n", dop(a, PA));
-	dop(a, PA);
-	return (SUCCESS);
-}
+	// ft_printf("going:"); write_op(PA);
+	// ft_printf("	status:%d\n", dop(a, PA));
 
 int	quick_back2(t_app *a)
 {
@@ -144,10 +143,10 @@ int	quick_back2(t_app *a)
 			quick_back_helper(a, next, RB);
 		else
 			quick_back_helper(a, next, RRB);
-		// write_ops_row(a); ft_printf("\n");
 	}
 	return (message_ret(SUCCESS, "finish quickback2!") + back_sort3(a));
 }
+		// write_ops_row(a); ft_printf("\n");
 		// ft_printf("next is:%d next_b:%d next_b-hight:%d\n",
 		// *next, *next_b, next_b - a->s.root_b + 1);
 		// print_stack(&a->s);

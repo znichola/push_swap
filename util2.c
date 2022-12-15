@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 16:56:08 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/14 01:39:37 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/15 05:22:01 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,51 +65,19 @@ void	bubble_sort(int *tab, int size)
 	bubble_sort(tab, size);
 }
 
-// check overflow and underflow return is 0 if safe
-// place the resul in a
-int	safe_multi(int *a, int b)
+int	qb3_helper(t_app *a, int *next)
 {
-	if (b == 0 || *a == 0)
-	{
-		*a = 0;
-		return (SUCCESS);
-	}
-	if (*a > 0)
-	{
-		if (b > 0) 
-		{
-			if (*a > (FT_INT_MAX / b))
-				return (FAILURE);
-		}
-		else
-		{
-			if ((b < 0) && b < (FT_INT_MIN / *a))
-				return (FAILURE);
-		}
-	}
-	else
-	{
-		if (b > 0)
-		{
-			if (*a < (FT_INT_MIN / b))
-				return (FAILURE);
-		}
-		else
-		{
-			if (b < (FT_INT_MAX / *a))
-				return (FAILURE);
-		}
-	}
-	*a = *a * b;
+	next = findin_sorted(*a->s.a, a->s.r.solution, a->s.r.s_end);
+	if (!next)
+		return (message_ret(ERROR, "can't find a next in solution!"));
+	if (next == a->s.r.solution)
+		return (message_ret(ERROR, "next is solution!")
+			+ backroot(a) + back_sort3(a));
 	return (SUCCESS);
 }
 
-int	safe_add(int *a, int b)
+void	qb3_helper2(t_app *a, int *next)
 {
-	if (a > 0 && b > FT_INT_MAX - *a)
-		return (FAILURE);
-	else if (a < 0 && b < FT_INT_MIN - *a)
-		return (FAILURE);
-	*a = *a + b;
-	return (SUCCESS);
+	dop(a, RRA);
+	next += 1;
 }

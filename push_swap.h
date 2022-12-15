@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/14 17:02:39 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/15 05:22:12 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # define RRR 10
 # define OPS_NUM 11
 
-# define FT_INT_MAX 0x7fffffff
-# define FT_INT_MIN (-1-0x7fffffff)
+# define FT_INT_MAX 2147483647
+# define FT_INT_MIN -2147483648
 
 typedef struct s_run
 {
@@ -93,7 +93,6 @@ typedef struct s_app
 	t_op_array		opp_mod[OPS_NUM];
 }	t_app;
 
-
 /* process inputdata */
 
 int		ft_atoi_read(int *n, char **str);
@@ -120,7 +119,7 @@ int		quick_back_helper(t_app *a, int *next, int op);
 int		quick_back2(t_app *a);
 /* quick_back3 */
 
-int	quick_back3(t_app *a);
+int		quick_back3(t_app *a);
 
 /* basic sort */
 
@@ -135,10 +134,6 @@ int		print_stack(t_stack *s);
 
 int		opmerg(t_ops *o, t_ops *new);
 void	copyops_new_to_old(t_ops *old, t_ops *new);
-
-/* carry */
-
-int		longest_op_run(t_ops *o, int op);
 
 /* util */
 
@@ -155,6 +150,9 @@ int		*findin_unsorted(int x, int *arr, int size);
 void	bubble_sort(int *tab, int size);
 int		safe_multi(int *a, int b);
 int		safe_add(int *a, int b);
+int		qb3_helper(t_app *a, int *next);
+int		backroot(t_app *a);
+void	qb3_helper2(t_app *a, int *next);
 
 /* debug */
 

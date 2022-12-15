@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:48:11 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/13 13:06:06 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/15 04:14:59 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	sort3(t_app *a)
 		return (dop(a, RA) + dop(a, SA));
 	return (FAILURE);
 }
-
 
 int	back_sort3(t_app *a)
 {

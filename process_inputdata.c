@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/15 03:47:57 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/15 03:51:01 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	ft_atoi_read(int *n, char **str)
 			return (FAILURE);
 		(*str)++;
 	}
-	// ft_printf("last char is:%d\n", **str);
 	if (!(**str == ' ' || **str == '\0'))
 		return (FAILURE);
 	safe_multi(n, s);
@@ -62,7 +61,6 @@ int	finish_setup(t_stack *s)
 		return (ERROR);
 	if (init_ops(s))
 		return (freeret_1(ERROR, s->r.solution));
-	// ft_printf("\nstack size:%d\n", s->size);
 	if (s->size <= 150)
 		s->pivot = (t_qs){2, 4};
 	else if (s->size <= 300)

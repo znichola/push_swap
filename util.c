@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:07:31 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/15 03:00:18 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/15 04:03:33 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	message_ret(int sig, char *msg)
 {
+	return (sig);
+}
 	// int	fd;
 
 	// fd = 1;
@@ -22,8 +24,6 @@ int	message_ret(int sig, char *msg)
 	// else
 	// 	ft_putstr_fd(msg, fd);
 	// ft_putchar_fd('\n', fd);
-	return (sig);
-}
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
