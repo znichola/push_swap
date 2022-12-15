@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:55:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/15 03:01:43 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/15 03:33:07 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,58 @@ int	try(t_app *a, int *next)
 	
 }
 
+static int	stay_looping(t_app *a)
+{
+	int	*next;
+
+	next = findin_sorted(*a->s.a, a->s.r.solution, a->s.r.s_end);
+	if (!next)
+		return (message_ret(ERROR, "can't find a next in solution!"));
+	if (next == a->s.r.solution)
+			return (message_ret(ERROR, "next is solution!") + backroot(a) + back_sort3(a));
+	next += 1;
+	while (*next == *a->s.root_a)
+	{
+		dop(a, RRA);
+		next = findin_sorted(*a->s.a, a->s.r.solution, a->s.r.s_end);
+		if (!next)
+			return (message_ret(ERROR, "can't find a next in solution!"));
+		if (next == a->s.r.solution)
+				return (message_ret(ERROR, "next is solution!") + backroot(a) + back_sort3(a));
+		next += 1;
+	}
+	return (SUCCESS);
+}
+
+static int	quick_back_helper3(t_app *a, int *next, int op)
+{
+	
+	while (*a->s.b != *next)
+	{
+		// ft_printf("going:"); write_op(op);
+		// ft_printf("	before:%p op:%d", a->s.o.c, *a->s.o.c);
+		// ft_printf("	status:%d", dop(a, op));
+		// ft_printf("	after:%p op:%d\n", a->s.o.c, *a->s.o.c);
+		if (*a->s.b < *a->s.a && !isreset(&a->s) && *a->s.b != *next && *a->s.b > a->s.r.s_end[-3])
+		{
+			dop(a, PA);
+			dop(a, RA);
+			// ft_printf("1 a_root:%d\n", *a->s.root_a);
+		}
+		else if (*a->s.b < *a->s.a && *a->s.b > *a->s.root_a && *a->s.b != *next && *a->s.b > a->s.r.s_end[-3])
+		{
+			dop(a, PA);
+			dop(a, RA);
+			// ft_printf("2 a_root:%d\n", *a->s.root_a);
+		}
+		else
+			dop(a, op);
+	}
+	// ft_printf("going:"); write_op(PA); ft_printf("	status:%d\n", dop(a, PA));
+	dop(a, PA);
+	return (SUCCESS);
+}
+
 int	quick_back3(t_app *a)
 {
 	int	*next;
@@ -92,12 +144,12 @@ int	quick_back3(t_app *a)
 
 
 		// if (*a->s.root_a == *a->s.r.solution)
-		if (*a->s.b < *a->s.a && !isreset(&a->s) && *a->s.b != *next && *a->s.b > a->s.r.s_end[-3])
-		{
-			dop(a, PA);
-			dop(a, RA);
-			// ft_printf("1 a_root:%d\n", *a->s.root_a);
-		}
+		// if (*a->s.b < *a->s.a && !isreset(&a->s) && *a->s.b != *next && *a->s.b > a->s.r.s_end[-3])
+		// {
+		// 	dop(a, PA);
+		// 	dop(a, RA);
+		// 	// ft_printf("1 a_root:%d\n", *a->s.root_a);
+		// }
 		// try(a, next);
 		// if (*a->s.b < *a->s.a && *a->s.b > *a->s.root_a && *a->s.b != *next && *a->s.b > a->s.r.s_end[-3])
 		// {
@@ -107,15 +159,15 @@ int	quick_back3(t_app *a)
 		// }
 		i = next_b - a->s.root_b + 1;
 		if (i > hight_b / 2)
-			quick_back_helper(a, next, RB);
+			quick_back_helper3(a, next, RB);
 		else
-			quick_back_helper(a, next, RRB);
-		if (*a->s.root_a == *next)
-		{
-			ft_printf("bug!\n");
-			dop(a, RRA);
-		}
-
+			quick_back_helper3(a, next, RRB);
+		// if (*a->s.root_a == *next)
+		// {
+		// 	ft_printf("bug!\n");
+		// 	dop(a, RRA);
+		// }
+		stay_looping(a); 
 		// write_ops_row(a); ft_printf("\n");
 	}
 	return (message_ret(SUCCESS, "finish quickback2!") + backroot(a) + back_sort3(a));

@@ -1,78 +1,125 @@
-pb
-pb
-rr
-pb
-rb
-pb
-rb
-pb
-pb
-rb
-pb
-pb
-pb
-rr
-pb
-rb
-pb
-ra
-pb
-rb
-pb
-pb
-rb
-pb
-rb
-pb
-pb
-sa
-rb
-rb
-rb
-rb
-rb
-rb
-pa
-rrb
-rrb
-rrb
-rrb
-rrb
-pa
-rb
-rb
-rb
-pa
-rrb
-pa
-rrb
-rrb
-pa
-rrb
-pa
-rb
-pa
-rrb
-pa
-rrb
-rrb
-rrb
-pa
-rb
-rb
-pa
-rrb
-pa
-rrb
-rrb
-pa
-rrb
-rrb
-pa
-rrb
-pa
-rb
-sb
-pa
-pa
-pa
+High range :
+
+509        cmds
+[OK]
+                    
+520        cmds
+[OK]
+                    
+517        cmds
+[OK]
+                    
+542        cmds
+[OK]
+                    
+513        cmds
+[OK]
+                    
+
+Test pour 500 :
+
+4780       cmds
+[OK]
+                    
+4836       cmds
+[OK]
+                    
+4848       cmds
+[OK]
+                    
+4734       cmds
+[OK]
+                    
+4772       cmds
+[OK]
+                    
+4919       cmds
+[OK]
+                    
+4882       cmds
+[OK]
+                    
+4940       cmds
+[OK]
+                    
+4921       cmds
+[OK]
+                    
+4905       cmds
+[OK]
+                    
+
+High range :
+
+4870       cmds
+[OK]
+                    
+4873       cmds
+[OK]
+                    
+4873       cmds
+[OK]
+                    
+4861       cmds
+[OK]
+                    
+4885       cmds
+[OK]
+                    
+
+Test (multi arg) :
+
+Pour 3 :
+
+1          cmds
+[OK]
+                    
+Pour 4 :
+
+8          cmds
+[OK]
+                    
+Pour 5 :
+
+9          cmds
+[OK]
+                    
+Pour 50 :
+
+218        cmds
+[OK]
+                    
+Pour 100 :
+
+513        cmds
+[OK]
+                    
+534        cmds
+[OK]
+                    
+532        cmds
+[OK]
+                    
+Pour 500 :
+
+4881       cmds
+[OK]
+                    
+4847       cmds
+[OK]
+                    
+4903       cmds
+[OK]
+                    
+
+Ton average score :
+
+Pour 3         : 1
+
+Pour 4         : 7
+
+Pour 5         : 9
+
+Pour 100       : 524
+
+Pour 500       : 4859

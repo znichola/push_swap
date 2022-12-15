@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/14 01:45:26 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/15 03:47:57 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	finish_setup(t_stack *s)
 	else if (s->size <= 300)
 		s->pivot = (t_qs){3, 6};
 	else
-		s->pivot = (t_qs){6, 12};
+		s->pivot = (t_qs){4, 8};
 	return (SUCCESS);
 }
 
