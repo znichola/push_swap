@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:46:44 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/12 22:58:15 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/14 17:02:48 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int	calc_pivot(t_app *a, t_qs *q, int *start, int *end)
 		list[i] = start[i];
 	bubble_sort(list, i);
 	// ft_printf("pivot m:%d mm:%d\n", a->s.pivot.m, a->s.pivot.mm);
-	if (end - start > 10)
-		*q = (t_qs){(*(list + i / 6)), (*(list + i / 12))};
-	else if (end - start <= 10 && start != end)
+	if (end - start > 20)
+		*q = (t_qs){(*(list + i / a->s.pivot.m)), (*(list + i / a->s.pivot.mm))};
+	else if (end - start <= 20 && start != end)
 		*q = (t_qs){(*(list + i - 3)), (*(list + (i - 3) / 2))};
 	// ft_printf("afterpivot m:%d mm:%d\n", q->m, q->mm);
 
@@ -103,7 +103,7 @@ int	quicksort(t_app *a)
 		// print_stack(&a->s);
 		// next_b = findin_unsorted(next[1], a->s.b, hight_b);
 
-static int	quick_back_helper(t_app *a, int *next, int op)
+int	quick_back_helper(t_app *a, int *next, int op)
 {
 	
 	while (*a->s.b != *next)

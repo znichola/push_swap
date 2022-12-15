@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:48:11 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/11 16:43:12 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/13 13:06:06 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,15 @@ int	sort3(t_app *a)
 	return (FAILURE);
 }
 
+
 int	back_sort3(t_app *a)
 {
 	if (sh(&a->s, 'b') == 1)
 		return (dop(a, PA));
 	if (sh(&a->s, 'b') == 2)
 	{
-		if (*a->s.root_b < *a->s.b)
-			dop(a, SA);
+		if (*a->s.root_b > *a->s.b)
+			dop(a, SB);
 		return (dop(a, PA) + dop(a, PA));
 	}
 	if (sh(&a->s, 'b') != 3)
@@ -74,3 +75,7 @@ int	back_sort3(t_app *a)
 		return (dop(a, PA) + dop(a, PA) + dop(a, PA));
 	return (FAILURE);
 }
+
+	// ft_printf("quickpack sort!\n");
+	// print_stack(&a->s);
+	// write_ops_row(a);

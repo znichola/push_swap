@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/12 15:36:55 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/14 17:02:39 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@
 # define RRB 9
 # define RRR 10
 # define OPS_NUM 11
+
+# define FT_INT_MAX 0x7fffffff
+# define FT_INT_MIN (-1-0x7fffffff)
 
 typedef struct s_run
 {
@@ -76,6 +79,9 @@ typedef struct s_stack
 // chicken and egg problem also this is apointer so the
 // real value needs to be initialised somewhere
 
+/* main */
+void	exit_error(int code);
+
 /* function pointer */
 typedef int	(*t_op_array)(t_stack *);
 
@@ -110,7 +116,11 @@ int		dop(t_app *a, int opp);
 int		calc_pivot(t_app *a, t_qs *q, int *start, int *end);
 int		quicksort(t_app *a);
 // int		quick_back(t_qs *q, t_app *a);
+int		quick_back_helper(t_app *a, int *next, int op);
 int		quick_back2(t_app *a);
+/* quick_back3 */
+
+int	quick_back3(t_app *a);
 
 /* basic sort */
 
@@ -124,6 +134,11 @@ int		print_stack(t_stack *s);
 /* merg */
 
 int		opmerg(t_ops *o, t_ops *new);
+void	copyops_new_to_old(t_ops *old, t_ops *new);
+
+/* carry */
+
+int		longest_op_run(t_ops *o, int op);
 
 /* util */
 
@@ -138,6 +153,8 @@ int		freeret_3(int ret, void *x, void *y, void *z);
 int		*findin_sorted(int x, int *arr, int *arr_end);
 int		*findin_unsorted(int x, int *arr, int size);
 void	bubble_sort(int *tab, int size);
+int		safe_multi(int *a, int b);
+int		safe_add(int *a, int b);
 
 /* debug */
 

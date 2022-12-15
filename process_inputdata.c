@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/12 22:54:17 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/14 01:45:26 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,15 @@ int	ft_atoi_read(int *n, char **str)
 	if (!(**str >= '0' && **str <= '9'))
 		return (FAILURE);
 	while (**str >= '0' && **str <= '9')
-		*n = *n * 10 + (*(*str)++) - '0';
-	*n = *n * s;
+	{
+		if (!(safe_multi(n, 10) + safe_add(n, **str - '0') == SUCCESS))
+			return (FAILURE);
+		(*str)++;
+	}
+	// ft_printf("last char is:%d\n", **str);
+	if (!(**str == ' ' || **str == '\0'))
+		return (FAILURE);
+	safe_multi(n, s);
 	return (SUCCESS);
 }
 
@@ -61,16 +68,21 @@ int	finish_setup(t_stack *s)
 	else if (s->size <= 300)
 		s->pivot = (t_qs){3, 6};
 	else
-		s->pivot = (t_qs){4, 10};
+		s->pivot = (t_qs){6, 12};
 	return (SUCCESS);
 }
 
 static int	add_single_num(t_stack *s, int index, char *str)
 {
 	int	number;
+	int	e;
 
 	if (ft_atoi_read(&number, &str))
 		return (FAILIUR);
+	e = index;
+	while (++e < s->size)
+		if (s->root_a[e] == number)
+			return (FAILURE);
 	s->root_a[index] = number;
 	return (SUCCESS);
 }

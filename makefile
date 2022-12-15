@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 07:44:20 by znichola          #+#    #+#              #
-#    Updated: 2022/12/12 15:40:34 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/14 17:02:06 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME	=	push_swap
 
 FILES	=	main                     stack_ops__1 \
 			process_inputdata        stack_ops__2 \
-			       util   merg      \
+			       util   merg   quick_back3   \
 			 stack_ops__0      debug        \
-			init quicksort basic_sort util2 process_inputdata2
+			init quicksort basic_sort util2 process_inputdata2 carry
 SRC		=	$(addsuffix .c, $(FILES))
 OBJ		=	$(SRC:.c=.o)
 
