@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 15:14:24 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/15 17:26:09 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:14:25 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*ft_ps_strnstr(const char *big, const char *little, size_t len)
 	return (NULL);
 }
 
-static int find_opp(char *str, size_t len)
+static int	find_opp(char *str, size_t len)
 {
 	if (len == 3 && ft_ps_strnstr(str, "sa\n", 3))
 		return (SA);
@@ -89,7 +89,7 @@ static int	do_opp7(t_stack *s, int op)
 	if (op == RA)
 		return (ra_(s));
 	if (op == RB)
-		return (ra_(s));
+		return (rb_(s));
 	if (op == RR)
 		return (rr_(s));
 	if (op == RRR)
@@ -101,7 +101,7 @@ int	main(int ac, char **av)
 {
 	t_stack	stack;
 	char	*op;
-	
+
 	if (ac == 1)
 		exit(0);
 	if (process_inputdata(&stack, av + 1, ac - 1))
@@ -109,7 +109,7 @@ int	main(int ac, char **av)
 	op = get_next_line(0);
 	while (op != NULL)
 	{
-		if (do_opp7(&stack, find_opp(op, ft_strlen(op)) == ERROR))
+		if (do_opp7(&stack, find_opp(op, ft_strlen(op))) == ERROR)
 			exit(1);
 		op = get_next_line(0);
 	}

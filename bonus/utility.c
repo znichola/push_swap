@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:00:37 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/15 17:28:13 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/15 17:44:22 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ int	process_inputdata(t_stack *stack, char **str, int n)
 	while (n--)
 		if (add_single_num(stack, n, str[i++]))
 			return (freeret_2(ERROR, stack->root_a, stack->root_b));
-	// if (finish_setup(stack))
-	// 	return (freeret_2(ERROR, stack->root_a, stack->root_b));
 	return (SUCCESS);
 }
 
