@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/15 05:22:12 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:10:24 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int		process_inputdata(t_stack *stack, char **str, int n);
 
 /* process inputdate 2 */
 
+int		countnums(char const *s);
 int		find_solution(t_stack *s);
 int		process_inputdata_old(t_stack *stack, char *str);
 

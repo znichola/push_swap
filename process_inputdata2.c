@@ -6,13 +6,13 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:01:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/13 11:16:50 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:10:07 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	countnums(char const *s)
+int	countnums(char const *s)
 {
 	int		count;
 	int		flag;

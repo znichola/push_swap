@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 20:20:43 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/15 03:51:01 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:12:19 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ static int	add_single_num(t_stack *s, int index, char *str)
 	int	number;
 	int	e;
 
+	if (countnums(str) > 1)
+		return (FAILURE);
 	if (ft_atoi_read(&number, &str))
 		return (FAILIUR);
 	e = index;
