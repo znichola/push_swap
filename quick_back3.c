@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:55:26 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/15 05:22:37 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/17 20:29:05 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	quick_back3(t_app *a)
 	int	*next_b;
 
 	hight_b = sh(&a->s, 'b');
-	while (hight_b > 4)
+	while (hight_b > 3)
 	{
 		hight_b = sh(&a->s, 'b');
 		next = findin_sorted(*a->s.a, a->s.r.solution, a->s.r.s_end);

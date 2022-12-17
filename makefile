@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 07:44:20 by znichola          #+#    #+#              #
-#    Updated: 2022/12/16 11:17:17 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/17 20:42:07 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ $(NAME) : $(LIB) $(OBJ) #$(INCLUDE)
 # 		$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(INC_PAR) -L$(LIB_DIR) -lft
 
 
-bonus : bonus/checker
+bonus : checker
 	$(MAKE) -C checker 
 
 clean :
@@ -64,12 +64,14 @@ clean :
 
 fclean : clean
 	$(RM) $(NAME)
+	$(MAKE) -C $(LIB_DIR) fclean
+#	$(MAKE) -C 
 
-re : fclean all
+re : fclean all bonus
 
 # libft
 $(LIB):
 		$(MAKE) -C $(LIB_DIR) $(LIB_N)
 		cp $(LIB) $(NAME)
 
-.PHONY : all re clean fclean bonus
+.PHONY : all re clean fclean
