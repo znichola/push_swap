@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: znichola <znichola@student.42.fr>          +#+  +:+       +#+        */
+/*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:07:31 by znichola          #+#    #+#             */
-/*   Updated: 2022/11/16 13:41:27 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/17 20:29:20 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 int	message_ret(int sig, char *msg)
 {
-	if (sig == ERROR)
-		while (*msg)
-			write(1, msg++, 1);
 	return (sig);
 }
+	// int	fd;
+
+	// fd = 1;
+	// if (sig == ERROR)
+	// 	ft_putstr_fd(msg, fd);
+	// else
+	// 	ft_putstr_fd(msg, fd);
+	// ft_putchar_fd('\n', fd);
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
@@ -53,53 +58,3 @@ int	freeret_3(int ret, void *x, void *y, void *z)
 	free(z);
 	return (ret);
 }
-
-// assuming the list is biggest > smallest 
-int	*findin_sorted(int x, int *arr, int *arr_end)
-{
-	int	*t;
-
-	t = arr + ((arr_end - arr) / 2);
-	// printf("x:%d t:%d diff:%ld arr:%p end:%p\n", x, *t, arr_end - arr, arr, arr_end);
-	if (*arr_end == x)
-		return (arr_end);
-	if (*arr == x)
-		return (arr);
-	if (*t == x)
-		return (t);
-	if (arr_end - arr <= 1)
-		return (NULL);
-	if (*t > x)
-		return (findin_sorted(x, t + 1, arr_end));
-	return (findin_sorted(x, arr, t - 1));
-}
-
-int	*findin_unsorted(int x, int *arr, int size)
-{
-	while (size-- > 0)
-		if (arr[size] == x)
-			return (arr + size);
-	return (NULL);
-}
-
-// int main(void) 
-// {
-// 	int list[11];
-// 	for (int i = 0; i < 11; i++)
-// 		list[i] = i;
-// 	list[0] = -1;
-// 	list[1] = 1;
-// 	printf("here\n");
-// 	// printf("0:%d\n", list[0]);
-// 	// printf("0:%d\n", list[1]);
-// 	for (int i = -2; i < 12; i++)
-// 	{
-// 		// pri ntf("%d\n", list[i]);
-// 		int	*t = findin_sorted(i, list, list + 10);
-// 		if (!t)
-// 			printf("i:%d null ret\n", i);
-// 		else
-// 			printf("%p: i:%d %d\n", t, i, *t);
-// 	}
-// 	return (0);
-// }
