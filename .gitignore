@@ -4,7 +4,9 @@ sort
 *.o
 push_swap
 checker
+checker_Mac
 scratch.c
 .DS_Store
 Push_Swap_Tester
 tester2
+*.py

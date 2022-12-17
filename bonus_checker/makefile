@@ -5,69 +5,63 @@
 #                                                     +:+ +:+         +:+      #
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/16 07:44:20 by znichola          #+#    #+#              #
-#    Updated: 2022/12/17 21:22:23 by znichola         ###   ########.fr        #
+#    Created: 2022/11/16 21:29:13 by znichola          #+#    #+#              #
+#    Updated: 2022/12/17 20:44:25 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	push_swap
+NAME	=	checker
 
-FILES	=	main                     stack_ops__1 \
-			process_inputdata        stack_ops__2 \
-			       util   merg   quick_back3   \
-			 stack_ops__0      debug    util3    \
-			init quicksort basic_sort util2 process_inputdata2
+FILES	=	main utility ../util3 ../stack_ops__0 ../stack_ops__1 ../stack_ops__2 
+
 SRC		=	$(addsuffix .c, $(FILES))
-OBJ		=	$(SRC:.c=.o)
+OBJ		= 	$(SRC:.c=.o)
 
-# INCLUDE	=	push_swap.h
+PS_SRC	=	../push_swap/
+PS_NAME	=	push_swap
+PUSH	=	$(PS_SRC)$(push_swap)
+
+INCLUDE	=	checker.h \
+			../libft/libft.h \
+			../libft/printf/ft_printf.h \
+			../libft/get_next_line/get_next_line.h
+INC_PAR	=	$(addprefix -I, $(INCLUDE))
+
 
 CC 		=	gcc
-CFLAGS	=	-Wall -Werror -Wextra
-CFLAGS	=	-g3 -fsanitize=address
-# CFLAGS		= -g3
+# CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-g
 RM		=	rm -f
-
-INCLUDE	=	push_swap.h \
-			libft/libft.h \
-			libft/printf/ft_printf.h \
-			libft/get_next_line/get_next_line.h
-INC_PAR	=	$(addprefix -I, $(INCLUDE))
 
 # submodule
 # libft
-LIB_DIR	=	libft
+LIB_DIR	=	../libft
 LIB_N	=	libft.a
 LIB		=	$(LIB_DIR)/$(LIB_N)
-
-
-# .c.o :
-#		 $(CC) $(CFLAGS) -I${INCLUDE} -c $< -o $(@)
 
 .c.o :
 		$(CC) $(CFLAGS) -c $< -o $(@)
 
 all : $(NAME)
 
-$(NAME) : $(LIB) $(OBJ) #$(INCLUDE)
+$(NAME) : $(LIB) $(OBJ)
 		$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(INC_PAR) -L$(LIB_DIR) -lft
 
-# $(NAME) : $(LIB) $(PUSH) $(OBJ)
-# 		$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(INC_PAR) -L$(LIB_DIR) -lft
-
-
-bonus : bonus_checker
-	$(MAKE) -C checker 
+bonus : $(NAME)
 
 clean :
 	$(RM) $(OBJ)
+	$(MAKE) -C $(LIB_DIR) clean
 
 fclean : clean
 	$(RM) $(NAME)
 	$(MAKE) -C $(LIB_DIR) fclean
-#	$(MAKE) -C 
 
-re : fclean all bonus
+# # push_swap program
+# $(PUSH) :
+# 	$(MAKE) -C $(PS_SRC) $(PS_NAME)
+
+re : fclean all
 
 # libft
 $(LIB):
@@ -75,3 +69,5 @@ $(LIB):
 		cp $(LIB) $(NAME)
 
 .PHONY : all re clean fclean bonus
+
+# .SILENT:
