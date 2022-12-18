@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 21:29:13 by znichola          #+#    #+#              #
-#    Updated: 2022/12/17 20:44:25 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/18 13:51:30 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ INC_PAR	=	$(addprefix -I, $(INCLUDE))
 
 
 CC 		=	gcc
-# CFLAGS	=	-Wall -Werror -Wextra
-CFLAGS	=	-g
+CFLAGS	=	-Wall -Werror -Wextra
+# CFLAGS	=	-g
 RM		=	rm -f
 
 # submodule
@@ -55,7 +55,7 @@ clean :
 
 fclean : clean
 	$(RM) $(NAME)
-	$(MAKE) -C $(LIB_DIR) fclean
+#	$(MAKE) -C $(LIB_DIR) fclean
 
 # # push_swap program
 # $(PUSH) :
@@ -71,3 +71,6 @@ $(LIB):
 .PHONY : all re clean fclean bonus
 
 # .SILENT:
+
+# TODO use the proper input validation for the cheker progra
+# TODO check that the checker correctly throws a KO when the list of args is more than 3
