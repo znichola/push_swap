@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:45:50 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/15 04:13:29 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/17 23:05:30 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	addopp(t_ops *o, int opp)
 // 	*o->c = opp2;
 // }
 
-static int	new_merged(t_ops *new, t_ops *o, int i, int ret)
+static int	new_merged(t_ops *new, int ret)
 {
 	if (ret == -1)
 		return (FAILIUR);
@@ -58,9 +58,9 @@ int	opmerg(t_ops *o, t_ops *new)
 	while (i++ < h - 1)
 	{
 		flag = 0;
-		if (new_merged(new, o, i, merg_test(o->root + i, RA, RB, RR))
-			+ new_merged(new, o, i, merg_test(o->root + i, RRA, RRB, RRR))
-			+ new_merged(new, o, i, merg_test(o->root + i, SA, SB, SS))
+		if (new_merged(new, merg_test(o->root + i, RA, RB, RR))
+			+ new_merged(new, merg_test(o->root + i, RRA, RRB, RRR))
+			+ new_merged(new, merg_test(o->root + i, SA, SB, SS))
 			!= FAILIUR * 3)
 			i = i + 1;
 		else

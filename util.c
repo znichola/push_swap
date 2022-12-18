@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:07:31 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/17 20:29:20 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/17 23:03:33 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	message_ret(int sig, char *msg)
 {
+	(void)msg;
 	return (sig);
 }
 	// int	fd;

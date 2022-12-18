@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 14:33:30 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/16 13:10:24 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/17 23:06:16 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ void	qb3_helper2(t_app *a, int *next);
 
 /* debug */
 
-void	input_check(int ip, t_stack *s);
+void	input_check(int ip);
 void	write_op(int i);
 void	write_ops_row(t_app *a);
 void	write_ops_column(t_app *a);

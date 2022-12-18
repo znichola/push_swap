@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:49:21 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/17 20:22:26 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/17 23:06:29 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int ac, char **av)
 	t_app	app;
 
 	init_app(&app);
-	input_check(do_inputs(&app.s, av + 1, ac - 1), &app.s);
+	input_check(do_inputs(&app.s, av + 1, ac - 1));
 	if (!check_complete(&app.s))
 		exit(0);
 	quicksort(&app);

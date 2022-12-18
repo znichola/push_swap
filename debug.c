@@ -6,14 +6,14 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 15:09:04 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/15 04:14:55 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/17 23:05:56 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // TODO: rename this
-void	input_check(int ip, t_stack *s)
+void	input_check(int ip)
 {
 	if (ip != 0 || ip == 2)
 	{

@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 07:44:20 by znichola          #+#    #+#              #
-#    Updated: 2022/12/17 21:22:23 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/17 23:58:34 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJ		=	$(SRC:.c=.o)
 
 CC 		=	gcc
 CFLAGS	=	-Wall -Werror -Wextra
-CFLAGS	=	-g3 -fsanitize=address
+# CFLAGS	=	-g3 -fsanitize=address
 # CFLAGS		= -g3
 RM		=	rm -f
 
@@ -57,21 +57,22 @@ $(NAME) : $(LIB) $(OBJ) #$(INCLUDE)
 
 
 bonus : bonus_checker
-	$(MAKE) -C checker 
+		$(MAKE) -C bonus_checker checker 
+		cp bonus_checker/checker checker
 
 clean :
 	$(RM) $(OBJ)
 
 fclean : clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) checker
 	$(MAKE) -C $(LIB_DIR) fclean
-#	$(MAKE) -C 
+	$(MAKE) -C bonus_checker fclean
 
-re : fclean all bonus
+re : fclean all
 
 # libft
 $(LIB):
 		$(MAKE) -C $(LIB_DIR) $(LIB_N)
 		cp $(LIB) $(NAME)
 
-.PHONY : all re clean fclean bonus
+.PHONY : all re clean fclean bonus test
