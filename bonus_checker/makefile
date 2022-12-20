@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 21:29:13 by znichola          #+#    #+#              #
-#    Updated: 2022/12/18 13:51:30 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/17 23:02:38 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,3 @@ $(LIB):
 .PHONY : all re clean fclean bonus
 
 # .SILENT:
-
-# TODO use the proper input validation for the cheker progra
-# TODO check that the checker correctly throws a KO when the list of args is more than 3

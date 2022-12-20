@@ -6,7 +6,7 @@
 /*   By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 15:14:24 by znichola          #+#    #+#             */
-/*   Updated: 2022/12/18 13:48:36 by znichola         ###   ########.fr       */
+/*   Updated: 2022/12/17 23:46:04 by znichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ static int	check_complete(t_stack *s)
 	int	i;
 
 	i = sh(s, 'a');
-	ft_printf("i:%d size:%d", i, s->size);
 	if (i != s->size)
 		return (FAILURE);
 	while (i-- > 1)
@@ -109,7 +108,6 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 		exit(0);
-	input_check(do_inputs(&app.s, av + 1, ac - 1));
 	if (process_inputdata(&stack, av + 1, ac - 1))
 		exit(1);
 	op = get_next_line(0);
@@ -117,7 +115,7 @@ int	main(int ac, char **av)
 	{
 		if (do_opp7(&stack, find_opp(op, ft_strlen(op))) == ERROR)
 			exit(1);
-		free(op);
+		// free(op);
 		op = get_next_line(0);
 	}
 	if (!check_complete(&stack))

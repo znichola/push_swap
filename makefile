@@ -6,7 +6,7 @@
 #    By: znichola <znichola@student.42lausanne.ch>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/16 07:44:20 by znichola          #+#    #+#              #
-#    Updated: 2022/12/17 23:58:34 by znichola         ###   ########.fr        #
+#    Updated: 2022/12/17 23:39:59 by znichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,9 @@ fclean : clean
 	$(MAKE) -C bonus_checker fclean
 
 re : fclean all
+
+test : all bonus
+	ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker $ARG
 
 # libft
 $(LIB):
